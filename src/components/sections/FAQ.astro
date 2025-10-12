@@ -1,7 +1,24 @@
 ---
 import { faqs } from '../../site.config';
 import { ChevronDown, ArrowRight } from 'lucide-astro';
+
+// Génération du Schema.org FAQPage
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
+
+<!-- Schema.org FAQPage structured data -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <!-- Section FAQ avec sémantique appropriée -->
 <section 

@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # vercel
 .vercel
+
+# guide referencement google
+GUIDE_REFERENCEMENT_GOOGLE.md

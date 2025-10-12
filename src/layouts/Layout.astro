@@ -27,10 +27,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		
+		<!-- SEO & Language Meta Tags -->
+		<meta http-equiv="content-language" content="fr" />
+		<meta name="language" content="French" />
+		<meta name="author" content="StriveX" />
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<meta name="googlebot" content="index, follow" />
+		<meta name="theme-color" content="#3b82f6" />
+		
 		<!-- Primary Meta Tags -->
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
+		<meta name="keywords" content={siteConfig.keywords.join(', ')} />
 		<link rel="canonical" href={canonicalURL} />
 
 		<!-- Open Graph / Facebook -->
@@ -55,19 +64,49 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 		<!-- View Transitions -->
 		<ViewTransitions />
 
-		<!-- Schema.org markup for LocalBusiness -->
+		<!-- Schema.org markup - Professional Service / Freelancer -->
 		<script type="application/ld+json">
 			{
 				"@context": "https://schema.org",
 				"@type": "ProfessionalService",
 				"name": "StriveX",
-				"description": "Agence de développement web spécialisée dans les sites et MVPs pour startups",
-				"url": "https://strivex.dev",
-				"logo": "https://strivex.dev/favicon.ico",
-				"email": "contact@strivex.dev",
-				"areaServed": "FR",
+				"alternateName": "StriveX - Développeur Freelance Web",
+				"description": "StriveX spécialisé dans la création de sites web, landing pages et MVPs. Livraison rapide (14-45 jours), tarifs transparents, accompagnement personnalisé. Idéal pour startups, PME et entrepreneurs.",
+				"url": "https://strivex.fr",
+				"logo": {
+					"@type": "ImageObject",
+					"url": "https://strivex.fr/images/logo.png",
+					"width": 512,
+					"height": 512
+				},
+				"image": "https://strivex.fr/images/logo.png",
+				"sameAs": [
+					"https://www.linkedin.com/in/arthur-jean-401b56239/"
+				],
+				"email": "contact@strivex.fr",
+				"founder": {
+					"@type": "Person",
+					"name": "Arthur Jean",
+					"jobTitle": "Développeur Full-Stack Freelance",
+					"email": "contact@strivex.fr"
+				},
+				"serviceType": [
+					"Développement web",
+					"Landing pages sur-mesure",
+					"Sites vitrine",
+					"MVP SaaS",
+					"Sites web pour startups",
+					"Développement Next.js",
+					"Développement React",
+					"Développement Astro"
+				],
 				"priceRange": "€€",
-				"serviceType": ["Développement web", "Landing pages", "MVP SaaS"]
+				"paymentAccepted": ["Virement bancaire", "Stripe"],
+				"areaServed": {
+					"@type": "Country",
+					"name": "France"
+				},
+				"availableLanguage": ["French", "English"]
 			}
 		</script>
 	</head>

@@ -1,7 +1,48 @@
 ---
 import { testimonials } from '../../site.config';
 import { Star, Quote } from 'lucide-astro';
+import { siteConfig } from '../../site.config';
+
+// Calcul de la note moyenne
+const averageRating = testimonials.reduce((acc, t) => acc + t.rating, 0) / testimonials.length;
+
+// Génération du Schema.org AggregateRating et Reviews
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "StriveX",
+  "url": siteConfig.url,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": averageRating.toFixed(1),
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": testimonials.length
+  },
+  "review": testimonials.map(testimonial => ({
+    "@type": "Review",
+    "author": {
+      "@type": "Person",
+      "name": testimonial.name
+    },
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": testimonial.rating,
+      "bestRating": "5",
+      "worstRating": "1"
+    },
+    "reviewBody": testimonial.content,
+    "datePublished": "2024",
+    "publisher": {
+      "@type": "Organization",
+      "name": testimonial.company
+    }
+  }))
+};
 ---
+
+<!-- Schema.org Review/AggregateRating structured data -->
+<script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
 
 <!-- Section Témoignages avec sémantique appropriée -->
 <section 

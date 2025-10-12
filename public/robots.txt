@@ -1,7 +1,23 @@
-# Allow all crawlers
+# robots.txt pour StriveX
+# Politique de crawl pour tous les moteurs de recherche
+
 User-agent: *
+Allow: /
+Disallow: /api/
+
+# Crawl delay pour éviter la surcharge
+Crawl-delay: 1
+
+# Bots spécifiques - tous autorisés
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
 Allow: /
 
 # Sitemap location
-Sitemap: https://strivex.dev/sitemap-index.xml
+Sitemap: https://strivex.fr/sitemap-index.xml
 

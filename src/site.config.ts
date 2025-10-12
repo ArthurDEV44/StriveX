@@ -1,9 +1,29 @@
 export const siteConfig = {
   name: "StriveX",
   title: "StriveX - Sites & MVPs sur-mesure pour startups",
-  description: "Lancez votre startup en 7 jours, pas 7 mois. Sites et MVPs sur-mesure pour startups ambitieuses. Design premium, livraison express.",
+  description: "StriveX : landing pages, sites vitrine et MVPs SaaS. Design premium, livraison rapide, tarifs transparents. Pas d'agence, du sur-mesure. Dès 1 800€.",
   url: "https://strivex.fr",
   ogImage: "/og-image.jpg",
+  keywords: [
+    // Positionnement Core (QUI) - Sans "startup"
+    "développeur freelance",
+    "développeur freelance web",
+    "développeur web indépendant",
+    
+    // Services (QUOI) - Mix large + niche
+    "site web",
+    "landing page",
+    "création site web",
+    "développeur MVP",
+    "MVP SaaS",
+    
+    // Technologies (COMMENT)
+    "développeur Next.js",
+    "site web rapide",
+    
+    // Option : 1 keyword "startup" pour la niche
+    "site web startup"
+  ],
   links: {
     email: "contact@strivex.fr",
     calendly: "https://calendly.com/arthur-jean-strivex/30min",
@@ -14,13 +34,13 @@ export const siteConfig = {
 export const features = [
   {
     icon: "Zap",
-    title: "Lancez avant vos concurrents",
-    description: "Livraison en 7-21j pendant qu'eux attendent 3 mois"
+    title: "Profitez de notre expertise",
+    description: "On vous accompagne de A à Z, de la maquette à la livraison en suivant un process structuré"
   },
   {
     icon: "Gem",
     title: "Convertissez vos visiteurs en clients",
-    description: "Design optimisé pour la conversion, pas juste \"joli\""
+    description: "Design optimisé pour la conversion, pas simplement esthétique"
   },
   {
     icon: "Target",
@@ -29,8 +49,8 @@ export const features = [
   },
   {
     icon: "Users",
-    title: "Économisez 70% vs une agence",
-    description: "Qualité agence, tarif freelance"
+    title: "Nous ne sommes pas une agence",
+    description: "Livraison rapide et tarif abordable"
   }
 ]
 
@@ -42,8 +62,7 @@ export const pricingPlans = [
     period: "HT",
     badge: "Parfait pour valider votre idée",
     description: "Pour pre-seed, solo founders, side projects",
-    deliveryTime: "7 jours",
-    deliveryIcon: "⚡",
+    deliveryTime: "14 jours",
     features: [
       "Landing page 1 page complète",
       "Design moderne et responsive",
@@ -62,8 +81,7 @@ export const pricingPlans = [
     period: "HT",
     badge: "Recommandé",
     description: "Pour startups seed, SaaS en lancement",
-    deliveryTime: "14 jours",
-    deliveryIcon: "🚀",
+    deliveryTime: "30 jours",
     features: [
       "Site 5-7 pages complet",
       "Espace connexion utilisateur (optionnel)",
@@ -84,8 +102,7 @@ export const pricingPlans = [
     period: "HT",
     badge: "Solution complète",
     description: "Pour SaaS en growth, Series A, produits complexes",
-    deliveryTime: "21 jours",
-    deliveryIcon: "🔥",
+    deliveryTime: "45 jours",
     features: [
       "Tout du Pack Scale +",
       "Dashboard utilisateur avec features de base",
@@ -103,20 +120,8 @@ export const pricingPlans = [
 
 export const addons = [
   {
-    name: "Intégration IA/OpenAI",
-    price: "500€"
-  },
-  {
-    name: "E-commerce Stripe",
-    price: "800€"
-  },
-  {
-    name: "Espace membre avancé",
-    price: "1 000€"
-  },
-  {
-    name: "Blog avec CMS headless",
-    price: "400€"
+    name: "Intégration IA : OpenAI / Anthropic / Mistral / Ollama / etc.",
+    price: "Sur Devis"
   }
 ]
 
@@ -124,25 +129,25 @@ export const processSteps = [
   {
     step: "01",
     title: "Call découverte (30 min)",
-    description: "On définit tes besoins et objectifs précis",
+    description: "On définit vos besoins",
     duration: "30 min"
   },
   {
     step: "02",
     title: "Maquette en 48h",
-    description: "Tu valides le design avant qu'on code",
+    description: "Vous validez le design",
     duration: "48h"
   },
   {
     step: "03",
-    title: "Développement (7-21 jours)",
-    description: "Updates quotidiennes sur l'avancement",
-    duration: "7-21 jours"
+    title: "Développement",
+    description: "Vous restez au courant de l'avancement",
+    duration: "Selon votre projet"
   },
   {
     step: "04",
-    title: "Lancement & formation",
-    description: "Site en ligne + tu sais comment l'éditer",
+    title: "Déploiement & formation",
+    description: "Site en ligne & vous savez comment l'utiliser",
     duration: "1 jour"
   }
 ]
@@ -150,35 +155,27 @@ export const processSteps = [
 export const faqs = [
   {
     question: "Quels sont les délais de livraison ?",
-    answer: "Selon le pack choisi : 7 jours pour Launch, 14 jours pour Scale et 21 jours pour MVP. Ces délais commencent après validation des maquettes et réception de tous les contenus."
+    answer: "Selon le pack choisi : 14 jours pour Launch, 30 jours pour Scale et 45 jours pour MVP. Ces délais commencent après validation des maquettes et réception de tous les contenus. Les délais peuvent varier selon la complexité du projet."
   },
   {
     question: "Puis-je modifier mon site après livraison ?",
-    answer: "Absolument ! Nous vous formons et vous transmettons tous les accès. Vous pouvez aussi souscrire à notre forfait maintenance (à partir de 200€/mois) pour déléguer les modifications."
+    answer: "Absolument ! Vous pouvez profiter de notre forfait maintenance pour modifier votre site. Certaines modifications peuvent susciter des frais supplémentaires."
   },
   {
     question: "Quelles technologies utilisez-vous ?",
-    answer: "Nous utilisons des technologies modernes et éprouvées : Astro, Next.js, React, Tailwind CSS, Vercel/Netlify pour l'hébergement. Le choix dépend de vos besoins spécifiques."
+    answer: "Nous utilisons des technologies modernes et éprouvées : Next.js, Astro, React, Tailwind CSS, Vercel pour l'hébergement, etc. Le choix dépend de vos besoins spécifiques."
   },
   {
-    question: "L'hébergement est-il vraiment inclus ?",
-    answer: "Oui, 1 an d'hébergement est inclus sur Vercel ou Netlify (jusqu'à 100k visiteurs/mois). Au-delà, nous vous accompagnons pour upgrader selon vos besoins."
+    question: "Que ce passe-t-il après l'année d'hébergement inclus ?",
+    answer: "Nous vous accompagnons pour upgrader selon vos besoins. Le prix varie selon la complexité du projet."
   },
   {
-    question: "Proposez-vous de la maintenance ?",
-    answer: "Oui, nous proposons des forfaits de maintenance à partir de 200€/mois incluant : mises à jour, corrections de bugs, ajouts de contenu et support prioritaire."
-  },
-  {
-    question: "Puis-je voir des exemples de réalisations ?",
-    answer: "Bien sûr ! Contactez-nous et nous vous partagerons des projets similaires au vôtre, avec l'accord de nos clients."
+    question: "Combien coûte la maintenance après échéance du plan ?",
+    answer: "Nous proposons des forfaits de maintenance à partir de 200€/mois incluant : mises à jour, corrections de bugs, ajouts de contenu et support prioritaire. Le prix varie selon la complexité du projet."
   },
   {
     question: "Travaillez-vous avec des clients internationaux ?",
     answer: "Oui, nous travaillons avec des clients en France et à l'international. Tous nos sites peuvent être multilingues."
-  },
-  {
-    question: "Que se passe-t-il si je ne suis pas satisfait ?",
-    answer: "Nous itérons jusqu'à votre satisfaction complète. Si vraiment ça ne va pas, nous offrons une garantie satisfait ou remboursé sous 7 jours après la première version."
   }
 ]
 
@@ -188,7 +185,7 @@ export const testimonials = [
     role: "Founder",
     company: "Azuna",
     avatar: "/images/clients/azuna.png",
-    content: "Un grand merci pour le travail et le professionnalisme de StriveX, je recommande grandement 🔥",
+    content: "Équipe professionnelle et compétente. Travail de qualité, excellente communication. Je recommande à 100% 🔥",
     rating: 5,
     project: "Site Vitrine & Blog",
     website: "https://azuna.pro",
@@ -199,7 +196,7 @@ export const testimonials = [
     role: "Founder",
     company: "Au Sommet de Chez Vous",
     avatar: "/images/clients/ausommetdechezvous.png", 
-    content: "Encore merci pour le travail qu'à réalisé StriveX en refondant mon site à partir d'un wordpress, c'est vraiment un plaisir de travailler avec vous.",
+    content: "Refonte site web impeccable. Passage WP vers du sur-mesure, respect de l'identité d'origine, équipe pro et réactive. Recommande à 100% !",
     rating: 5,
     project: "Site Vitrine - Reprise d'un Wordpress",
     website: "https://ausommetdechezvous.bzh",

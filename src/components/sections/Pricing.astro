@@ -1,7 +1,41 @@
 ---
 import { pricingPlans, addons } from '../../site.config';
 import { Check, BadgeCheck, ArrowRight } from 'lucide-astro';
+import { siteConfig } from '../../site.config';
+
+// Génération du Schema.org Service/Offer pour chaque plan
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Tarifs StriveX - Sites et MVPs pour startups",
+  "description": "Offres de développement web pour startups : Launch (1 800€), Scale (2 800€), MVP (4 500€). Livraison rapide et support inclus.",
+  "offers": pricingPlans.map(plan => ({
+    "@type": "Offer",
+    "name": `Pack ${plan.name}`,
+    "description": plan.description,
+    "price": plan.price,
+    "priceCurrency": "EUR",
+    "availability": "https://schema.org/InStock",
+    "url": `${siteConfig.url}#pricing`,
+    "seller": {
+      "@type": "Organization",
+      "name": "StriveX"
+    },
+    "itemOffered": {
+      "@type": "Service",
+      "name": `Pack ${plan.name}`,
+      "description": `${plan.description}. Inclus : ${plan.features.join(', ')}`,
+      "provider": {
+        "@type": "Organization",
+        "name": "StriveX"
+      }
+    }
+  }))
+};
 ---
+
+<!-- Schema.org Service/Offer structured data -->
+<script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
 
 <!-- Section Pricing avec sémantique appropriée -->
 <section 
@@ -97,16 +131,18 @@ import { Check, BadgeCheck, ArrowRight } from 'lucide-astro';
               <span class="text-lg sm:text-xl text-gray-600">{plan.currency}</span>
               <span class="text-gray-600 text-sm">{plan.period}</span>
             </div>
-            <div 
-              class="mt-3 flex items-center text-sm sm:text-base"
-              aria-label={`Délai de livraison : ${plan.deliveryTime}`}
-            >
-              <span class="mr-2 text-lg" role="img" aria-label="Icône de livraison">{plan.deliveryIcon}</span>
-              <span class="text-gray-700 font-['PPMori'] font-normal">
-                Livraison : <span class="font-semibold text-[#2d2d2d]">{plan.deliveryTime}</span>
-              </span>
-            </div>
+          <div 
+            class="mt-3 flex items-center text-sm sm:text-base"
+            aria-label={`Délai de livraison : ${plan.deliveryTime}`}
+          >
+            <span class="text-gray-700 font-['PPMori'] font-normal">
+              Livraison : <span class="font-semibold text-[#2d2d2d]">{plan.deliveryTime}</span>
+            </span>
           </div>
+          <p class="text-xs text-gray-600 mt-2 font-['PPMori'] font-normal">
+            * Peut varier selon le projet
+          </p>
+        </div>
 
           <!-- Liste des fonctionnalités avec sémantique appropriée -->
           <ul 
@@ -166,7 +202,7 @@ import { Check, BadgeCheck, ArrowRight } from 'lucide-astro';
         </header>
         
         <ul 
-          class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 list-none"
+          class="w-full"
           role="list"
           aria-label="Options supplémentaires disponibles"
         >

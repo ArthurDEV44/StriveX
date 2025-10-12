@@ -13,7 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig({
   output: 'server',
   
-  site: 'https://strivex.dev',
+  site: 'https://strivex.fr',
 
   vite: {
     plugins: [tailwindcss()],

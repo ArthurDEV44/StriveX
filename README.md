@@ -141,4 +141,4 @@ url: "https://votre-domaine.com"
 
 ## 🤝 Support
 
-Pour toute question : contact@strivex.dev
+Pour toute question : contact@strivex.fr

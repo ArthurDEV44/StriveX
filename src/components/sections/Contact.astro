@@ -1,0 +1,413 @@
+---
+import { siteConfig, pricingPlans } from '../../site.config';
+import { Send, Mail, Calendar, Check } from 'lucide-astro';
+---
+
+<!-- Section Contact avec sémantique appropriée -->
+<section 
+  id="contact" 
+  class="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50 scroll-mt-24"
+  aria-labelledby="contact-heading"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- En-tête de section -->
+    <header class="text-center mb-16">
+      <h2 
+        id="contact-heading"
+        class="text-4xl md:text-5xl font-['PPMori'] font-bold text-gray-900 mb-4"
+      >
+        Prêt à <span class="text-[#2d2d2d]">lancer votre projet</span> ?
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto font-['PPMori'] font-normal">
+        Décrivez-nous votre projet ou réservez directement un call de 15 minutes
+      </p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      
+      <!-- Formulaire de contact avec accessibilité complète -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
+        <h3 class="text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-6">
+          Envoyez-nous un message
+        </h3>
+        
+        <!-- Message de succès (caché par défaut) -->
+        <div 
+          id="success-message"
+          class="hidden mb-6 p-4 bg-green-50 border border-green-200 rounded-xl"
+          role="alert"
+          aria-live="polite"
+        >
+          <p class="text-green-800 font-['PPMori'] font-medium text-sm flex items-center gap-2">
+            <Check class="w-5 h-5 flex-shrink-0" />
+            Message envoyé ! Nous vous répondrons sous 24h.
+          </p>
+        </div>
+        
+        <form 
+          class="space-y-5 sm:space-y-6" 
+          id="contact-form"
+          novalidate
+          aria-label="Formulaire de contact"
+        >
+          <!-- Champ Nom -->
+          <div>
+            <label 
+              for="name" 
+              class="block text-sm font-['PPMori'] font-medium text-gray-700 mb-2"
+            >
+              Nom complet <span class="text-red-600" aria-label="requis">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              required
+              autocomplete="name"
+              aria-required="true"
+              aria-invalid="false"
+              aria-describedby="name-error"
+              class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2d2d2d] focus:border-transparent transition-all outline-none font-['PPMori'] text-sm"
+              placeholder="John Doe"
+            />
+            <p 
+              id="name-error" 
+              class="hidden mt-2 text-sm text-red-600 font-['PPMori']"
+              role="alert"
+            >
+              Veuillez entrer votre nom complet
+            </p>
+          </div>
+
+          <!-- Champ Email -->
+          <div>
+            <label 
+              for="email" 
+              class="block text-sm font-['PPMori'] font-medium text-gray-700 mb-2"
+            >
+              Email professionnel <span class="text-red-600" aria-label="requis">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required
+              autocomplete="email"
+              aria-required="true"
+              aria-invalid="false"
+              aria-describedby="email-error"
+              class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2d2d2d] focus:border-transparent transition-all outline-none font-['PPMori'] text-sm"
+              placeholder="john@startup.com"
+            />
+            <p 
+              id="email-error" 
+              class="hidden mt-2 text-sm text-red-600 font-['PPMori']"
+              role="alert"
+            >
+              Veuillez entrer une adresse email valide
+            </p>
+          </div>
+
+          <!-- Sélection du Pack -->
+          <div>
+            <label 
+              for="pack" 
+              class="block text-sm font-['PPMori'] font-medium text-gray-700 mb-2"
+            >
+              Pack intéressé <span class="text-gray-500 text-xs">(optionnel)</span>
+            </label>
+            <select 
+              id="pack" 
+              name="pack"
+              aria-describedby="pack-hint"
+              class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2d2d2d] focus:border-transparent transition-all outline-none font-['PPMori'] text-sm appearance-none cursor-pointer"
+            >
+              <option value="">Je ne sais pas encore</option>
+              {pricingPlans.map((plan) => (
+                <option value={plan.name}>{plan.name} - {plan.price}€</option>
+              ))}
+            </select>
+            <p 
+              id="pack-hint" 
+              class="mt-2 text-xs text-gray-500 font-['PPMori']"
+            >
+              Nous vous aiderons à choisir le pack adapté
+            </p>
+          </div>
+
+          <!-- Champ Message -->
+          <div>
+            <label 
+              for="message" 
+              class="block text-sm font-['PPMori'] font-medium text-gray-700 mb-2"
+            >
+              Parlez-nous de votre projet <span class="text-red-600" aria-label="requis">*</span>
+            </label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="4" 
+              required
+              aria-required="true"
+              aria-invalid="false"
+              aria-describedby="message-error message-hint"
+              class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2d2d2d] focus:border-transparent transition-all outline-none resize-none font-['PPMori'] text-sm"
+              placeholder="Je souhaite créer..."
+            ></textarea>
+            <p 
+              id="message-hint" 
+              class="mt-2 text-xs text-gray-500 font-['PPMori']"
+            >
+              Décrivez votre projet, vos objectifs et vos délais
+            </p>
+            <p 
+              id="message-error" 
+              class="hidden mt-2 text-sm text-red-600 font-['PPMori']"
+              role="alert"
+            >
+              Veuillez décrire votre projet
+            </p>
+          </div>
+
+          <!-- Bouton de soumission -->
+          <button 
+            type="submit"
+            class="cta-button group relative inline-flex items-center justify-center w-full px-8 py-3.5 text-base sm:text-lg font-['PPMori'] font-semibold text-white rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a1a1a] focus-visible:ring-offset-4 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+            aria-label="Envoyer le formulaire de contact"
+          >
+            <span class="relative z-10 flex items-center gap-2">
+              <Send class="w-5 h-5" aria-hidden="true" />
+              <span>Envoyer ma demande</span>
+            </span>
+          </button>
+
+          <p class="text-sm text-gray-600 text-center font-['PPMori'] font-normal">
+            Réponse sous 24h maximum
+          </p>
+        </form>
+      </div>
+
+      <!-- Options de contact rapide -->
+      <aside class="space-y-6" aria-label="Méthodes de contact alternatives">
+        
+        <!-- Carte Calendly -->
+        <article class="calendly-card bg-[#2d2d2d] rounded-2xl p-6 sm:p-8 text-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] transition-all duration-300 relative overflow-hidden">
+          <div class="flex flex-col items-start relative z-10">
+            <h3 class="text-xl sm:text-2xl font-['PPMori'] font-semibold mb-3">
+              Réservez un call gratuit
+            </h3>
+            <p class="mb-6 text-gray-300 text-sm leading-relaxed font-['PPMori'] font-normal">
+              15 minutes pour discuter de votre projet sans engagement
+            </p>
+            <a 
+              href={siteConfig.links.calendly}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="cta-button-light inline-flex items-center gap-2 px-6 py-3 bg-white text-[#2d2d2d] font-['PPMori'] font-medium text-sm rounded-full hover:bg-gray-100 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2d2d2d]"
+              aria-label="Ouvrir Calendly pour réserver un appel gratuit de 15 minutes"
+            >
+              <Calendar class="w-4 h-4" aria-hidden="true" />
+              <span>Choisir un créneau</span>
+              <svg 
+                class="w-4 h-4" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  stroke-width="2" 
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Carte Email direct -->
+        <article class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] transition-all duration-300">
+          <div class="flex items-start gap-4 sm:gap-6">
+            <div class="flex-shrink-0">
+              <div 
+                class="p-3 bg-gray-50 rounded-xl"
+                aria-hidden="true"
+              >
+                <Mail class="w-7 h-7 sm:w-8 sm:h-8 text-[#2d2d2d]" />
+              </div>
+            </div>
+            <div>
+              <h3 class="text-lg sm:text-xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-2">
+                Ou écrivez-nous directement
+              </h3>
+              <a 
+                href={`mailto:${siteConfig.links.email}`}
+                class="text-[#2d2d2d] font-['PPMori'] font-medium text-sm sm:text-base hover:text-gray-700 transition-colors underline decoration-2 underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded"
+                aria-label={`Envoyer un email à ${siteConfig.links.email}`}
+              >
+                {siteConfig.links.email}
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Carte Garanties -->
+        <article 
+          class="bg-white border border-gray-200 rounded-2xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.08)]"
+          aria-labelledby="guarantees-heading"
+        >
+          <h4 
+            id="guarantees-heading"
+            class="font-['PPMori'] font-semibold text-[#2d2d2d] mb-4"
+          >
+            Nos engagements :
+          </h4>
+          <ul 
+            class="space-y-3 list-none"
+            role="list"
+          >
+            <li 
+              class="flex items-start gap-3"
+              role="listitem"
+            >
+              <Check 
+                class="w-5 h-5 text-[#2d2d2d] flex-shrink-0 mt-0.5" 
+                aria-hidden="true"
+              />
+              <span class="text-gray-700 text-sm font-['PPMori'] font-normal">
+                Réponse rapide (24h max)
+              </span>
+            </li>
+            <li 
+              class="flex items-start gap-3"
+              role="listitem"
+            >
+              <Check 
+                class="w-5 h-5 text-[#2d2d2d] flex-shrink-0 mt-0.5" 
+                aria-hidden="true"
+              />
+              <span class="text-gray-700 text-sm font-['PPMori'] font-normal">
+                Devis détaillé et transparent
+              </span>
+            </li>
+            <li 
+              class="flex items-start gap-3"
+              role="listitem"
+            >
+              <Check 
+                class="w-5 h-5 text-[#2d2d2d] flex-shrink-0 mt-0.5" 
+                aria-hidden="true"
+              />
+              <span class="text-gray-700 text-sm font-['PPMori'] font-normal">
+                Aucun engagement avant validation
+              </span>
+            </li>
+          </ul>
+        </article>
+      </aside>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  import { initFormValidation, validateAllFields, showSuccessMessage } from '@/utils';
+  import { validateFormData } from '@/utils/client-validation';
+  import type { FormFieldConfig } from '@/utils';
+
+  // Configuration des champs du formulaire
+  const formFields: FormFieldConfig[] = [
+    { id: 'name', required: true, type: 'text' },
+    { id: 'email', required: true, type: 'email' },
+    { id: 'message', required: true, type: 'textarea' }
+  ];
+
+  // Gestion complète et accessible du formulaire de contact
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    if (!form) return;
+
+    // Initialiser la validation en temps réel
+    initFormValidation('contact-form', formFields);
+
+    // Gestion de la soumission du formulaire
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Valider tous les champs
+      const { isValid, firstInvalidField } = validateAllFields(formFields);
+
+      if (!isValid && firstInvalidField) {
+        firstInvalidField.focus();
+        return;
+      }
+
+      // Désactiver le bouton pendant l'envoi
+      const submitButton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Envoi en cours...';
+      }
+
+      try {
+        // Récupérer et valider les données du formulaire côté client
+        const formData = new FormData(form);
+        const clientValidation = validateFormData(formData);
+
+        if (!clientValidation.success) {
+          // Afficher les erreurs de validation côté client
+          if (clientValidation.errors) {
+            Object.entries(clientValidation.errors).forEach(([field, error]) => {
+              const errorElement = document.getElementById(`${field}-error`);
+              if (errorElement) {
+                errorElement.textContent = error;
+                errorElement.classList.remove('hidden');
+              }
+            });
+          }
+          return;
+        }
+
+        // Envoyer les données validées à l'API Resend
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(clientValidation.data),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error(result.error || 'Erreur lors de l\'envoi');
+        }
+
+        // Afficher le message de succès
+        showSuccessMessage('success-message');
+
+        // Réinitialiser le formulaire
+        form.reset();
+
+      } catch (error) {
+        console.error('Form submission error:', error);
+        alert('Une erreur est survenue. Veuillez réessayer ou nous contacter directement par email.');
+      } finally {
+        // Réactiver le bouton
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = `
+            <span class="relative z-10 flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+              </svg>
+              <span>Envoyer ma demande</span>
+            </span>
+          `;
+        }
+      }
+    });
+  });
+</script>

@@ -1,0 +1,120 @@
+/**
+ * Styles d'accessibilité (WCAG AA+)
+ * Focus visible, screen readers, contraste, etc.
+ */
+
+/* Screen reader only - Masque visuellement mais reste accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus visible amélioré pour tous les éléments interactifs */
+:focus-visible {
+  outline: 2px solid #2d2d2d;
+  outline-offset: 2px;
+}
+
+/* Focus visible pour les liens */
+a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Focus visible pour les boutons */
+button:focus-visible {
+  outline: 2px solid #2d2d2d;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Amélioration du contraste (WCAG AA) */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Style pour les abréviations avec tooltip */
+abbr[title] {
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+}
+
+/* Retirer le marker par défaut des summary (accordéons) */
+summary::-webkit-details-marker,
+summary::marker {
+  display: none;
+}
+
+/* Focus visible pour les summary */
+summary:focus-visible {
+  outline: 2px solid #2d2d2d;
+  outline-offset: 4px;
+}
+
+/* Touch feedback pour mobile */
+@media (hover: none) and (pointer: coarse) {
+  summary:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Empêcher le double-tap zoom sur mobile pour les boutons */
+button {
+  touch-action: manipulation;
+}
+
+/* Assurer des zones de clic suffisantes sur mobile (min 44x44px - WCAG) */
+@media (max-width: 640px) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Scroll smooth avec offset pour les ancres */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem; /* Hauteur de la navbar */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Styles pour les formulaires accessibles */
+input:invalid:not(:placeholder-shown),
+textarea:invalid:not(:placeholder-shown) {
+  border-color: #dc2626;
+}
+
+input:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+  border-color: #10b981;
+}
+
+/* Amélioration du select custom */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232d2d2d'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1.25rem;
+}
+
+/* Reset du style italic pour address */
+address {
+  font-style: normal;
+}
+

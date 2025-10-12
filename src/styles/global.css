@@ -1,0 +1,90 @@
+/**
+ * Global CSS - Import centralisé de tous les styles
+ * Architecture modulaire pour faciliter la maintenance et le scaling
+ */
+
+/* ========================================
+   BASE - Tailwind CSS
+   ======================================== */
+@import "tailwindcss";
+
+/* ========================================
+   MODULES - Styles réutilisables
+   ======================================== */
+
+/* Accessibilité (WCAG AA+) */
+@import "./accessibility.css";
+
+/* Animations et transitions */
+@import "./animations.css";
+
+/* Boutons CTA */
+@import "./buttons.css";
+
+/* Composants réutilisables */
+@import "./components.css";
+
+/* Classes utilitaires */
+@import "./utilities.css";
+
+/* ========================================
+   FONTS - PP Mori Custom Font
+   ======================================== */
+
+@font-face {
+  font-family: 'PPMori';
+  src: url('/fonts/PPMori-ExtraLight.otf') format('opentype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPMori';
+  src: url('/fonts/PPMori-ExtralightItalic.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPMori';
+  src: url('/fonts/PPMori-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPMori';
+  src: url('/fonts/PPMori-RegularItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPMori';
+  src: url('/fonts/PPMori-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PPMori';
+  src: url('/fonts/PPMori-SemiBoldItalic.otf') format('opentype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
+body {
+  font-family: "PPMori", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

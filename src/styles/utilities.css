@@ -1,0 +1,188 @@
+/**
+ * Classes utilitaires réutilisables
+ * Helpers, spacing, typography, etc.
+ */
+
+/* ========================================
+   SCROLL & NAVIGATION
+   ======================================== */
+
+/* Scroll smooth avec offset pour la navbar */
+.scroll-mt-24 {
+  scroll-margin-top: 6rem;
+}
+
+/* ========================================
+   FOCUS & INTERACTIONS
+   ======================================== */
+
+/* Focus within pour les cards */
+.focus-within\:ring-2:focus-within {
+  outline: 2px solid #2d2d2d;
+  outline-offset: 4px;
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
+/* Amélioration du rendu des fonts */
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   LAYOUT
+   ======================================== */
+
+/* Container avec padding responsive */
+.container-padding {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-padding {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-padding {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+/* ========================================
+   SHADOWS
+   ======================================== */
+
+/* Ombres personnalisées cohérentes */
+.shadow-card {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.shadow-card-hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ========================================
+   TRANSITIONS
+   ======================================== */
+
+/* Transitions communes */
+.transition-default {
+  transition: all 0.3s ease;
+}
+
+.transition-fast {
+  transition: all 0.15s ease;
+}
+
+.transition-slow {
+  transition: all 0.5s ease;
+}
+
+/* ========================================
+   ÉTATS
+   ======================================== */
+
+/* État loading */
+.loading {
+  pointer-events: none;
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* État disabled */
+.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ========================================
+   RESPONSIVE HELPERS
+   ======================================== */
+
+/* Masquer sur mobile */
+@media (max-width: 640px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+/* Masquer sur desktop */
+@media (min-width: 641px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   PRINT
+   ======================================== */
+
+@media print {
+  /* Masquer les éléments non nécessaires à l'impression */
+  nav,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Optimiser pour l'impression */
+  body {
+    font-size: 12pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  /* Afficher les URLs des liens */
+  a[href]:after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+}
+
+/* ========================================
+   CUSTOM
+   ======================================== */
+
+   .calendly-card {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .calendly-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #2d2d2d;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  .calendly-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 100% 0%, rgba(255, 255, 255, 0.205) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .calendly-card > div {
+    position: relative;
+    z-index: 2;
+  }

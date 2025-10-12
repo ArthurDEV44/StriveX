@@ -1,0 +1,87 @@
+---
+import { siteConfig } from '../../site.config';
+import { Mail, Linkedin } from 'lucide-astro';
+---
+
+<footer class="bg-[#2d2d2d] text-gray-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <!-- Brand -->
+      <div class="md:col-span-2">
+        <h3 class="text-2xl font-['PPMori'] font-semibold text-white mb-4">StriveX</h3>
+        <p class="text-gray-400 mb-6 max-w-md text-sm leading-relaxed">
+          Sites et MVPs sur-mesure pour startups ambitieuses. Lancez votre projet en 7 jours, pas 7 mois.
+        </p>
+        <div class="flex items-center space-x-4">
+          <a 
+            href={`mailto:${siteConfig.links.email}`}
+            class="flex items-center text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/10"
+            aria-label="Email"
+          >
+            <Mail class="w-5 h-5" />
+          </a>
+          <a 
+            href={siteConfig.links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center text-gray-400 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/10"
+            aria-label="LinkedIn"
+          >
+            <Linkedin class="w-5 h-5" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h4 class="text-white font-['PPMori'] font-semibold mb-4 text-sm tracking-wide">NAVIGATION</h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="#features" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">Pourquoi StriveX</a>
+          </li>
+          <li>
+            <a href="#pricing" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">Nos offres</a>
+          </li>
+          <li>
+            <a href="#process" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">Notre processus</a>
+          </li>
+          <li>
+            <a href="#faq" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">FAQ</a>
+          </li>
+          <li>
+            <a href="#contact" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">Contact</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <h4 class="text-white font-['PPMori'] font-semibold mb-4 text-sm tracking-wide">LÉGAL</h4>
+        <ul class="space-y-3">
+          <li>
+            <a href="/mentions-legales" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">Mentions légales</a>
+          </li>
+          <li>
+            <a href="/cgv" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">CGV</a>
+          </li>
+          <li>
+            <a href="/confidentialite" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">Politique de confidentialité</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="pt-8 border-t border-gray-700">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm mb-4 md:mb-0 font-['PPMori']">
+          © {new Date().getFullYear()} StriveX. Tous droits réservés.
+        </p>
+        <p class="text-gray-400 text-sm font-['PPMori']">
+          Fait avec <span class="text-red-500">♥</span> pour les startups ambitieuses
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+

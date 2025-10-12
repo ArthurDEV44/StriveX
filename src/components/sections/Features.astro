@@ -1,0 +1,99 @@
+---
+import { features } from '../../site.config';
+import { Zap, Gem, Target, Users, ArrowRight } from 'lucide-astro';
+
+// Mapping des icônes avec leurs composants Lucide
+const iconMap = {
+  Zap,
+  Gem,
+  Target,
+  Users
+};
+
+// Labels ARIA pour les icônes (contexte sémantique)
+const iconAriaLabels: Record<string, string> = {
+  Zap: 'Icône de rapidité',
+  Gem: 'Icône de qualité premium',
+  Target: 'Icône de ciblage et spécialisation',
+  Users: 'Icône d\'accompagnement personnalisé'
+};
+---
+
+<!-- Section Features avec sémantique appropriée -->
+<section 
+  id="features" 
+  class="py-16 sm:py-20 md:py-24 lg:py-28 bg-white scroll-mt-24"
+  aria-labelledby="features-heading"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- En-tête de section avec structure sémantique -->
+    <header class="text-center mb-12 sm:mb-14 md:mb-16 lg:mb-20">
+      <h2 
+        id="features-heading"
+        class="text-3xl sm:text-4xl md:text-5xl font-['PPMori'] font-bold text-gray-900 mb-3 sm:mb-4 tracking-tight leading-tight"
+      >
+        Pourquoi choisir StriveX ?
+      </h2>
+      <p class="text-lg sm:text-xl md:text-2xl text-gray-700 max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-['PPMori'] font-normal">
+        On combine rapidité, qualité et expertise pour transformer votre vision en produit
+      </p>
+    </header>
+
+    <!-- Grille de features avec liste sémantique -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 md:gap-8">
+      {features.map((feature, index) => {
+        const Icon = iconMap[feature.icon as keyof typeof iconMap];
+        const ariaLabel = iconAriaLabels[feature.icon] || 'Icône de fonctionnalité';
+        
+        return (
+          <article 
+            class="feature-card relative group p-6 sm:p-7 md:p-8 border-2 border-dashed border-gray-200 rounded-0"
+            style={`animation-delay: ${index * 100}ms`}
+            role="article"
+            aria-labelledby={`feature-title-${index}`}
+          >
+            <!-- Contenu de la feature -->
+            <div>
+              <h3 
+                id={`feature-title-${index}`}
+                class="text-lg sm:text-xl font-['PPMori'] font-bold text-blue-600 mb-2 sm:mb-3 tracking-tight"
+              >
+                {feature.title}
+              </h3>
+              <p class="text-sm sm:text-base text-gray-700 leading-relaxed font-['PPMori'] font-normal">
+                {feature.description}
+              </p>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- Ajout optionnel : call-to-action après les features -->
+    <div class="mt-12 sm:mt-14 md:mt-16 text-center">
+      <p class="text-base sm:text-lg text-gray-600 mb-6 font-['PPMori'] font-normal">
+        Prêt à lancer votre projet ?
+      </p>
+      <a 
+        href="#contact"
+        class="cta-button group relative inline-flex items-center px-6 py-3 text-sm font-['PPMori'] font-medium rounded-full transition-all duration-300 cursor-pointer text-white"
+        aria-label="Commencer votre projet maintenant"
+      >
+        <span>Commencer maintenant</span>
+        <ArrowRight class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true" />
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  import { initIntersectionObserver } from '@/utils';
+
+  // Animer les cards au scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    initIntersectionObserver('.feature-card');
+  });
+</script>
+

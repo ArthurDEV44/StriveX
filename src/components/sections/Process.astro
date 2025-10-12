@@ -1,0 +1,134 @@
+---
+import { processSteps } from '../../site.config';
+import { ArrowRight } from 'lucide-astro';
+---
+
+<!-- Section Process/Timeline avec sémantique appropriée -->
+<section 
+  id="process" 
+  class="py-24 bg-white scroll-mt-24"
+  aria-labelledby="process-heading"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- En-tête de section -->
+    <header class="text-center mb-16">
+      <h2 
+        id="process-heading"
+        class="text-4xl md:text-5xl font-['PPMori'] font-bold text-gray-900 mb-4"
+      >
+        Comment ça <span class="text-[#2d2d2d]">marche</span> ?
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto font-['PPMori'] font-normal">
+        Un processus simple et transparent pour concrétiser votre projet
+      </p>
+    </header>
+
+    <!-- Timeline avec navigation ordonnée -->
+    <div class="relative">
+      <!-- Ligne de connexion entre les étapes (cachée sur mobile) -->
+      <div 
+        class="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 -translate-y-1/2 z-0"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Liste ordonnée des étapes du processus -->
+      <ol 
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-4 relative z-10 list-none"
+        role="list"
+        aria-label="Étapes du processus de développement"
+      >
+        {processSteps.map((step, index) => (
+          <li 
+            class="process-step relative"
+            role="listitem"
+            style={`animation-delay: ${index * 150}ms`}
+          >
+            <article 
+              class="relative bg-white p-6 rounded-0 border border-gray-200 group flex flex-col h-full"
+              aria-labelledby={`step-title-${index}`}
+            >
+              <!-- En-tête : numéro d'étape et durée -->
+              <header class="flex items-center gap-3 mb-4">
+                <!-- Numéro de l'étape -->
+                <div 
+                  class="inline-flex text-blue-600 font-['PPMori'] font-semibold text-2xl"
+                  role="status"
+                  aria-label={`Étape ${step.step}`}
+                >
+                  {step.step}
+                </div>
+                
+                <!-- Badge de durée -->
+                <div 
+                  class="px-3 py-1.5 bg-gray-50 border border-gray-200 text-gray-700 text-xs font-['PPMori'] font-medium rounded-full tracking-wide"
+                  role="status"
+                  aria-label={`Durée : ${step.duration}`}
+                >
+                  {step.duration}
+                </div>
+              </header>
+
+              <!-- Contenu de l'étape -->
+              <div class="flex-grow">
+                <!-- Titre de l'étape -->
+                <h3 
+                  id={`step-title-${index}`}
+                  class="text-xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3"
+                >
+                  {step.title}
+                </h3>
+
+                <!-- Description -->
+                <p class="text-gray-600 leading-relaxed text-sm font-['PPMori'] font-normal">
+                  {step.description}
+                </p>
+              </div>
+
+              <!-- Indicateur de flèche entre les étapes (desktop uniquement) -->
+              {index < processSteps.length - 1 && (
+                <div 
+                  class="hidden md:block absolute top-1/2 -right-4 -translate-y-1/2 text-[#2d2d2d] group-hover:text-gray-500 group-hover:translate-x-1 transition-all"
+                  aria-hidden="true"
+                >
+                  <ArrowRight class="w-5 h-5" />
+                </div>
+              )}
+            </article>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <!-- Call-to-action en bas de section -->
+    <footer class="mt-16 text-center">
+      <p class="text-gray-600 mb-6 font-['PPMori'] font-normal">
+        Prêt à démarrer ? Réservez votre créneau dès maintenant
+      </p>
+      <a 
+        href="#contact"
+        class="cta-button group relative inline-flex items-center px-8 py-3.5 text-lg font-['PPMori'] font-semibold text-white rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a1a1a] focus-visible:ring-offset-4"
+        aria-label="Commencer votre projet maintenant"
+      >
+        <span class="relative z-10 flex items-center">
+          <span>Lancer mon projet</span>
+          <ArrowRight 
+            class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" 
+            aria-hidden="true"
+          />
+        </span>
+      </a>
+    </footer>
+  </div>
+</section>
+
+
+<script>
+  import { initIntersectionObserver } from '@/utils';
+
+  // Animer les étapes au scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    initIntersectionObserver('.process-step');
+  });
+</script>
+

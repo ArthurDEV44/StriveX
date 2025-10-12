@@ -1,0 +1,177 @@
+---
+import { siteConfig } from '../site.config';
+import { ArrowUpRight, X, Menu } from 'lucide-astro';
+import { Image } from 'astro:assets';
+
+// Navigation items configuration
+const navigationItems = [
+  { href: '#features', label: 'FONCTIONNALITÉS', ariaLabel: 'Aller à la section fonctionnalités' },
+  { href: '#pricing', label: 'OFFRES', ariaLabel: 'Aller à la section offres' },
+  { href: '#process', label: 'PROCESSUS', ariaLabel: 'Aller à la section processus' },
+];
+---
+
+<!-- Navigation principale -->
+<nav 
+  class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-xl px-0 py-4 transition-all duration-300 border-b border-transparent hover:border-gray-100"
+  role="navigation"
+  aria-label="Navigation principale"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between gap-4 md:gap-8">
+      
+      <!-- Logo Section - Sémantique avec lien vers accueil -->
+      <a 
+        href="/" 
+        class="flex items-center gap-2 sm:gap-3 flex-shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded-lg transition-all duration-200 hover:opacity-80"
+        aria-label={`Retour à l'accueil de ${siteConfig.name}`}
+      >
+        <div class="flex items-center justify-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)]">
+          <Image 
+            src="/images/logo.png" 
+            alt={`Logo ${siteConfig.name}`}
+            width={32} 
+            height={32} 
+            priority 
+            class="w-7 h-7 sm:w-8 sm:h-8"
+          />
+        </div>
+        <span class="font-['PPMori'] font-semibold text-lg sm:text-xl text-[#2d2d2d] tracking-[-0.02em] drop-shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+          {siteConfig.name}
+        </span>
+      </a>
+
+      <!-- Navigation Links Desktop - Liste sémantique -->
+      <ul class="hidden md:flex items-center gap-8 lg:gap-12 flex-1 justify-center list-none m-0 p-0">
+        {navigationItems.map((item) => (
+          <li class="m-0 p-0">
+            <a 
+              href={item.href}
+              class="nav-link font-['PPMori'] font-medium text-sm text-[#2d2d2d] tracking-[0.05em] transition-all duration-200 hover:text-[#1a1a1a] hover:-translate-y-0.5 relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-4 rounded-sm px-1 py-1"
+              aria-label={item.ariaLabel}
+            >
+              {item.label}
+              <span class="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-[#1a1a1a] transition-all duration-300 group-hover:w-full" aria-hidden="true"></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- CTA Button Desktop -->
+      <div class="hidden sm:flex flex-shrink-0">
+        <a 
+          href="#contact"
+          class="cta-button-light inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 lg:py-3 bg-white border border-[#e5e5e5] rounded-full font-['PPMori'] font-medium text-sm text-[#2d2d2d] transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.08)] relative overflow-hidden hover:shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:border-[#d1d1d1] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 group"
+          aria-label="Réserver un appel de consultation"
+        >
+          <span class="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-all duration-500 group-hover:left-full" aria-hidden="true"></span>
+          <ArrowUpRight class="w-4 h-4 transition-transform duration-200 relative z-10 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+          <span class="relative z-10">Réserver un appel</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button - Accessible -->
+      <button 
+        id="mobile-menu-button"
+        class="md:hidden flex items-center justify-center w-10 h-10 bg-transparent border-none cursor-pointer p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded-lg transition-colors hover:bg-gray-100"
+        aria-label="Ouvrir le menu de navigation"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <Menu class="w-6 h-6 text-[#2d2d2d] transition-transform duration-300" id="menu-icon" aria-hidden="true" />
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div 
+  id="mobile-menu-overlay"
+  class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 opacity-0 invisible transition-all duration-300"
+  aria-hidden="true"
+>
+</div>
+
+<!-- Mobile Menu Drawer -->
+<aside
+  id="mobile-menu"
+  class="fixed top-0 right-0 bottom-0 w-full sm:w-80 bg-white z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menu de navigation mobile"
+  aria-hidden="true"
+>
+  <!-- Mobile Menu Header -->
+  <div class="flex items-center justify-between p-4 sm:p-6 border-b border-gray-100">
+    <span class="font-['PPMori'] font-semibold text-lg text-[#2d2d2d] tracking-[-0.02em]">
+      Menu
+    </span>
+    <button 
+      id="mobile-menu-close"
+      class="flex items-center justify-center w-10 h-10 bg-transparent border-none cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded-lg transition-colors hover:bg-gray-100"
+      aria-label="Fermer le menu de navigation"
+    >
+      <X class="w-6 h-6 text-[#2d2d2d]" aria-hidden="true" />
+    </button>
+  </div>
+
+  <!-- Mobile Menu Content -->
+  <div class="flex flex-col h-[calc(100%-80px)] overflow-y-auto">
+    <!-- Mobile Navigation Links -->
+    <nav class="flex-1 p-4 sm:p-6" role="navigation" aria-label="Menu de navigation mobile">
+      <ul class="flex flex-col gap-2 list-none m-0 p-0">
+        {navigationItems.map((item) => (
+          <li class="m-0 p-0">
+            <a 
+              href={item.href}
+              class="mobile-nav-link flex items-center justify-between px-4 py-4 font-['PPMori'] font-medium text-base text-[#2d2d2d] tracking-[0.02em] rounded-xl transition-all duration-200 hover:bg-gray-50 hover:text-[#1a1a1a] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2"
+              aria-label={item.ariaLabel}
+            >
+              {item.label}
+              <ArrowUpRight class="w-5 h-5 opacity-0 -translate-x-2 transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0" aria-hidden="true" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Mobile Menu CTA -->
+    <div class="p-4 sm:p-6 border-t border-gray-100">
+      <a 
+        href="#contact"
+        class="cta-button-mobile flex items-center justify-center gap-2 w-full px-5 py-4 bg-[#2d2d2d] text-white rounded-xl font-['PPMori'] font-medium text-base transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.15)] hover:bg-[#1a1a1a] hover:shadow-[0_4px_20px_rgba(0,0,0,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2"
+        aria-label="Réserver un appel de consultation"
+      >
+        <ArrowUpRight class="w-5 h-5 transition-transform duration-200" aria-hidden="true" />
+        <span>Réserver un appel</span>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<script>
+  import { MobileMenu, initSmoothScroll, initNavbarScrollEffect } from '@/utils';
+
+  // Initialiser tous les composants au chargement du DOM
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialiser le menu mobile
+    new MobileMenu({
+      menuButtonId: 'mobile-menu-button',
+      closeButtonId: 'mobile-menu-close',
+      menuId: 'mobile-menu',
+      overlayId: 'mobile-menu-overlay',
+      navLinkSelectors: ['.mobile-nav-link', '.cta-button-mobile']
+    });
+
+    // Initialiser le smooth scroll
+    initSmoothScroll('.nav-link, .cta-button, .mobile-nav-link, .cta-button-mobile', { 
+      offset: 100 
+    });
+
+    // Initialiser l'effet de scroll sur la navbar
+    initNavbarScrollEffect('nav[role="navigation"]', { 
+      scrollThreshold: 50 
+    });
+  });
+</script>
+

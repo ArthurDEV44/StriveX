@@ -1,0 +1,115 @@
+---
+import { testimonials } from '../../site.config';
+import { Star, Quote } from 'lucide-astro';
+---
+
+<!-- Section Témoignages avec sémantique appropriée -->
+<section 
+  id="testimonials" 
+  class="py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 scroll-mt-24"
+  aria-labelledby="testimonials-heading"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- En-tête de section -->
+    <header class="text-center mb-16">
+      <h2 
+        id="testimonials-heading"
+        class="text-4xl md:text-5xl font-['PPMori'] font-bold text-gray-900 mb-4"
+      >
+        Ce que disent nos <span class="text-[#2d2d2d]">clients</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto font-['PPMori'] font-normal">
+        Des retours authentiques de startups qui ont fait confiance à StriveX
+      </p>
+    </header>
+
+    <!-- Grille de témoignages -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+      {testimonials.map((testimonial, index) => (
+        <article 
+          class="testimonial-card relative bg-white rounded-2xl p-8 border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.08)] flex flex-col h-full"
+          style={`animation-delay: ${index * 150}ms`}
+          role="article"
+          aria-labelledby={`testimonial-title-${index}`}
+        >
+          <!-- Note étoiles -->
+          <div class="flex items-center gap-1 mb-6" role="img" aria-label={`${testimonial.rating} étoiles sur 5`}>
+            {Array.from({ length: testimonial.rating }, (_, i) => (
+              <Star class="w-5 h-5 text-yellow-400 fill-current" aria-hidden="true" />
+            ))}
+            {Array.from({ length: 5 - testimonial.rating }, (_, i) => (
+              <Star class="w-5 h-5 text-gray-300" aria-hidden="true" />
+            ))}
+          </div>
+
+          <!-- Contenu du témoignage -->
+          <blockquote class="flex-grow mb-8">
+            <p 
+              id={`testimonial-title-${index}`}
+              class="text-gray-700 text-lg leading-relaxed font-['PPMori'] font-normal italic"
+            >
+              "{testimonial.content}"
+            </p>
+          </blockquote>
+
+          <!-- Projet mentionné -->
+          <div class="mb-6">
+            <span class="inline-flex items-center px-3 py-1.5 bg-blue-50 text-blue-700 text-sm font-['PPMori'] font-medium rounded-full">
+              {testimonial.project}
+            </span>
+          </div>
+
+          <!-- Informations du client -->
+          <footer class="flex items-center gap-4 mt-auto">
+            <div class="flex-shrink-0">
+              <img 
+                src={testimonial.avatar}
+                alt={`Photo de ${testimonial.name}`}
+                class="w-12 h-12 rounded-full object-cover border-2 border-gray-200"
+                loading="lazy"
+              />
+            </div>
+            <div>
+              <cite class="block text-[#2d2d2d] font-['PPMori'] font-semibold text-base not-italic">
+                {testimonial.name}
+              </cite>
+              <p class="text-gray-600 text-sm font-['PPMori'] font-normal">
+                {testimonial.role} chez <span class="font-medium">{testimonial.company}</span>
+              </p>
+              <a 
+                href={testimonial.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blue-600 hover:text-blue-700 text-xs font-['PPMori'] font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 rounded"
+                aria-label={`Visiter le site ${testimonial.domain}`}
+              >
+                {testimonial.domain}
+              </a>
+            </div>
+          </footer>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonial-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Effet de survol amélioré */
+  .testimonial-card:hover {
+    transform: translateY(-4px);
+  }
+</style>

@@ -1,0 +1,140 @@
+/**
+ * Styles des composants réutilisables
+ * Cards, sections, navigation, etc.
+ */
+
+/* ========================================
+   FEATURE CARDS
+   ======================================== */
+
+.feature-card {
+  animation: fadeInScale 0.6s ease-out forwards;
+  opacity: 0;
+  will-change: transform, box-shadow;
+}
+
+.feature-card:not(:hover) {
+  will-change: auto;
+}
+
+/* Effet hover uniquement sur desktop */
+@media (hover: hover) and (pointer: fine) {
+  .feature-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Touch feedback pour mobile */
+@media (hover: none) and (pointer: coarse) {
+  .feature-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Zones de clic suffisantes sur mobile */
+@media (max-width: 640px) {
+  .feature-card {
+    min-height: 200px;
+  }
+}
+
+/* ========================================
+   PRICING CARDS
+   ======================================== */
+
+.pricing-card {
+  animation: fadeInScale 0.6s ease-out forwards;
+  opacity: 0;
+  will-change: transform, box-shadow;
+}
+
+.pricing-card:not(:hover) {
+  will-change: auto;
+}
+
+/* Ajustement de la carte populaire sur mobile */
+@media (max-width: 1023px) {
+  .pricing-card.lg\:scale-105 {
+    transform: none;
+  }
+}
+
+/* Touch feedback pour mobile */
+@media (hover: none) and (pointer: coarse) {
+  .pricing-card:active {
+    transform: scale(0.98);
+  }
+
+  .pricing-card.lg\:scale-105 {
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   PROCESS STEPS
+   ======================================== */
+
+.process-step {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Touch feedback pour mobile */
+@media (hover: none) and (pointer: coarse) {
+  .process-step article:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ========================================
+   FAQ ACCORDION
+   ======================================== */
+
+.faq-item {
+  animation: fadeInUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Animation de l'icône chevron */
+details[open] summary {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* ========================================
+   NAVBAR
+   ======================================== */
+
+.nav-link,
+.mobile-nav-link {
+  position: relative;
+}
+
+/* Hover effect pour les liens mobiles */
+.mobile-nav-link:hover .group-hover\:opacity-100 {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Transition fluide pour le menu mobile */
+#mobile-menu {
+  will-change: transform;
+}
+
+#mobile-menu-overlay {
+  will-change: opacity;
+}
+
+/* ========================================
+   SECTIONS COMMUNES
+   ======================================== */
+
+/* Scroll margin pour toutes les sections avec ID */
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* Assurer un contraste suffisant sur les gradients */
+.bg-gradient-to-br {
+  position: relative;
+}

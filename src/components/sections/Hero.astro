@@ -1,0 +1,109 @@
+---
+import { ArrowUpRight, BadgeCheck } from 'lucide-astro';
+
+// Trust indicators configuration pour faciliter la maintenance
+const trustIndicators = [
+  { icon: BadgeCheck, text: 'Livraison 7-21 jours', ariaLabel: 'Délai de livraison garanti entre 7 et 21 jours' },
+  { icon: BadgeCheck, text: '100% satisfait ou remboursé', ariaLabel: 'Garantie satisfait ou remboursé à 100%' },
+  { icon: BadgeCheck, text: 'Hébergement 1 an inclus', ariaLabel: 'Hébergement gratuit pendant un an' },
+];
+---
+
+<!-- Section Hero principale avec sémantique appropriée -->
+<section 
+  id="hero" 
+  class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 pt-20 md:pt-24"
+  aria-labelledby="hero-heading"
+>
+  <!-- Conteneur principal centré et responsive -->
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 text-center">
+    
+    <!-- En-tête principal avec hiérarchie H1 sémantique -->
+    <header class="mb-8 md:mb-12">
+      <h1 
+        id="hero-heading"
+        class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-['PPMori'] font-semibold tracking-tight text-gray-900 mb-4 sm:mb-6 leading-[1.1] sm:leading-tight animate-fade-in-up animation-delay-200"
+      >
+        Lancez votre site en 7 à 21<br class="hidden sm:block" aria-hidden="true" />
+        <span class="block sm:inline"> jours selon votre besoin</span>
+      </h1>
+
+      <!-- Sous-titre descriptif avec meilleur contraste -->
+      <p 
+        class="text-lg sm:text-xl md:text-2xl text-gray-700 mb-0 max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-['PPMori'] font-normal animate-fade-in-up animation-delay-400"
+      >
+        Sites et MVPs sur-mesure pour startups ambitieuses. Design premium, livraison express.
+      </p>
+    </header>
+
+    <!-- Groupe de CTA buttons avec navigation claire -->
+    <nav 
+      class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center animate-fade-in-up animation-delay-600 mb-12 sm:mb-16"
+      aria-label="Actions principales"
+    >      
+      <!-- CTA primaire - Dark variant -->
+      <a 
+        href="#contact" 
+        class="cta-button group relative inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 text-base sm:text-lg font-['PPMori'] font-semibold text-white rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a1a1a] focus-visible:ring-offset-4"
+        aria-label="Réserver un appel de consultation avec notre équipe"
+      >
+        <span class="relative z-10 flex items-center gap-2">
+          <span>Réserver un appel gratuit (30 min)</span>
+          <ArrowUpRight 
+            class="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-45 transition-transform duration-300" 
+            aria-hidden="true"
+          />
+        </span>
+      </a>
+      
+      <!-- CTA secondaire - Light variant -->
+      <a 
+        href="#pricing" 
+        class="cta-button-light group relative inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 text-base sm:text-lg font-['PPMori'] font-semibold rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6] focus-visible:ring-offset-4"
+        aria-label="Consulter nos offres et tarifs"
+      >
+        <span class="relative z-10 flex items-center gap-2">
+          <span>Voir nos offres</span>
+          <ArrowUpRight 
+            class="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-45 transition-transform duration-300" 
+            aria-hidden="true"
+          />
+        </span>
+      </a>
+    </nav>
+
+    <!-- Trust indicators avec liste sémantique -->
+    <aside 
+      class="animate-fade-in-up animation-delay-800"
+      aria-label="Garanties et engagements"
+    >
+      <ul class="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 list-none m-0 p-0">
+        {trustIndicators.map((indicator) => {
+          const IconComponent = indicator.icon;
+          return (
+            <li 
+              class="flex items-center gap-2 text-sm sm:text-base text-gray-700 font-['PPMori'] font-normal m-0 p-0"
+              aria-label={indicator.ariaLabel}
+            >
+              <IconComponent 
+                class="w-4 h-4 sm:w-5 sm:h-5 text-zinc-900 flex-shrink-0" 
+                aria-hidden="true"
+              />
+              <span>{indicator.text}</span>
+            </li>
+          );
+        })}
+      </ul>
+    </aside>
+  </div>
+</section>
+
+
+<script>
+  import { initSmoothScroll } from '@/utils';
+
+  // Initialiser le smooth scroll
+  document.addEventListener('DOMContentLoaded', () => {
+    initSmoothScroll('a[href^="#"]', { offset: 100 });
+  });
+</script>

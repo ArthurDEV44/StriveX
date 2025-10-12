@@ -1,0 +1,125 @@
+/**
+ * Styles des boutons CTA (Call To Action)
+ * Variantes : primary (dark), light, mobile
+ */
+
+/* Bouton CTA principal - Dark variant */
+.cta-button {
+  position: relative;
+  background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+/* Bordure transparente animée */
+.cta-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  padding: 2px;
+  background: transparent;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bordure intérieure en pointillés */
+.cta-button::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: 9999px;
+  border: 1.5px dashed rgba(255, 255, 255, 0.4);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cta-button:hover {
+  transform: scale(1.02);
+  filter: brightness(1.15);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cta-button:active {
+  transform: translateY(0);
+}
+
+/* Bouton CTA secondaire - Light variant */
+.cta-button-light {
+  position: relative;
+  background: white;
+  color: #2d2d2d;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Bordure gradient animée */
+.cta-button-light::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  padding: 1px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6, #f59e0b);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Bordure intérieure subtile */
+.cta-button-light::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 9999px;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cta-button-light:hover {
+  box-shadow: 0 4px 20px 0 rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+}
+
+.cta-button-light:active {
+  transform: translateY(0);
+}
+
+/* Bouton CTA mobile */
+.cta-button-mobile {
+  background: #2d2d2d;
+  color: white;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.15);
+}
+
+.cta-button-mobile:hover {
+  background: #1a1a1a;
+  box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+/* Touch feedback pour mobile */
+@media (hover: none) and (pointer: coarse) {
+  .cta-button:active,
+  .cta-button-light:active,
+  .cta-button-mobile:active {
+    transform: scale(0.97);
+  }
+}
+
+/* États disabled */
+.cta-button:disabled,
+.cta-button-light:disabled,
+.cta-button-mobile:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+

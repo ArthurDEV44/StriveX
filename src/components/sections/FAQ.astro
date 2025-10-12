@@ -1,0 +1,96 @@
+---
+import { faqs } from '../../site.config';
+import { ChevronDown, ArrowRight } from 'lucide-astro';
+---
+
+<!-- Section FAQ avec sémantique appropriée -->
+<section 
+  id="faq" 
+  class="py-24 bg-gradient-to-br from-blue-50 via-white to-purple-50 scroll-mt-24"
+  aria-labelledby="faq-heading"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- En-tête de section -->
+    <header class="text-center mb-16">
+      <h2 
+        id="faq-heading"
+        class="text-4xl md:text-5xl font-['PPMori'] font-bold text-gray-900 mb-4"
+      >
+        Questions <span class="text-[#2d2d2d]">fréquentes</span>
+      </h2>
+      <p class="text-xl text-gray-600 font-['PPMori'] font-normal">
+        Tout ce que vous devez savoir avant de vous lancer
+      </p>
+    </header>
+
+    <!-- FAQ accordion avec structure sémantique -->
+    <div 
+      class="space-y-4"
+      role="list"
+      aria-label="Liste des questions fréquemment posées"
+    >
+      {faqs.map((faq, index) => (
+        <details 
+          class="faq-item group bg-white rounded-2xl border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] transition-all duration-300 overflow-hidden"
+          style={`animation-delay: ${index * 100}ms`}
+          role="listitem"
+        >
+          <summary 
+            class="flex items-center justify-between cursor-pointer p-5 sm:p-6 font-['PPMori'] font-semibold text-base sm:text-lg text-[#2d2d2d] hover:text-gray-700 transition-colors list-none focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded-2xl"
+            aria-expanded="false"
+            aria-label={`Question : ${faq.question}`}
+          >
+            <span class="pr-6 sm:pr-8 leading-snug">{faq.question}</span>
+            <ChevronDown 
+              class="w-5 h-5 text-[#2d2d2d] flex-shrink-0 transform group-open:rotate-180 transition-transform duration-300" 
+              aria-hidden="true"
+            />
+          </summary>
+          <div 
+            class="px-5 sm:px-6 pb-5 sm:pb-6 pt-2 text-gray-600 leading-relaxed border-t border-gray-100 text-sm sm:text-base font-['PPMori'] font-normal"
+            role="region"
+            aria-label={`Réponse à : ${faq.question}`}
+          >
+            {faq.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <!-- Section d'aide supplémentaire -->
+    <footer class="mt-12 text-center">
+      <p class="text-gray-600 mb-6 font-['PPMori'] font-normal">
+        Vous avez d'autres questions ?
+      </p>
+      <a 
+        href="#contact"
+        class="cta-button-light group relative inline-flex items-center px-6 py-3 text-sm font-['PPMori'] font-medium rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6] focus-visible:ring-offset-4"
+        aria-label="Contactez-nous directement pour plus d'informations"
+      >
+        <span class="relative z-10 flex items-center gap-2">
+          <span>Contactez-nous directement</span>
+          <ArrowRight 
+            class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" 
+            aria-hidden="true"
+          />
+        </span>
+      </a>
+    </footer>
+  </div>
+</section>
+
+
+<script>
+  import { initFaqAccessibility, initIntersectionObserver } from '@/utils';
+
+  // Gestion de l'accessibilité et des animations
+  document.addEventListener('DOMContentLoaded', () => {
+    // Gérer l'accessibilité des accordéons
+    initFaqAccessibility('.faq-item');
+
+    // Animer les items au scroll
+    initIntersectionObserver('.faq-item');
+  });
+</script>
+

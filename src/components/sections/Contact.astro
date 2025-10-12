@@ -1,6 +1,15 @@
 ---
-import { siteConfig, pricingPlans } from '../../site.config';
+import { siteConfig } from '../../site.config';
 import { Send, Mail, Calendar, Check } from 'lucide-astro';
+import { getPricingPlans, useTranslations } from '../../i18n';
+
+interface Props {
+  locale: 'fr' | 'en';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const pricingPlans = getPricingPlans(locale);
 ---
 
 <!-- Section Contact avec sémantique appropriée -->
@@ -17,10 +26,10 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
         id="contact-heading"
         class="text-4xl md:text-5xl font-['PPMori'] font-bold text-gray-900 mb-4"
       >
-        Prêt à <span class="text-[#2d2d2d]">lancer votre projet</span> ?
+        {t('contact.heading')}
       </h2>
       <p class="text-xl text-gray-600 max-w-2xl mx-auto font-['PPMori'] font-normal">
-        Décrivez-nous votre projet ou réservez directement un call de 15 minutes
+        {t('contact.subheading')}
       </p>
     </header>
 
@@ -29,7 +38,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
       <!-- Formulaire de contact avec accessibilité complète -->
       <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.08)]">
         <h3 class="text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-6">
-          Envoyez-nous un message
+          {t('contact.form.title')}
         </h3>
         
         <!-- Message de succès (caché par défaut) -->
@@ -41,7 +50,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
         >
           <p class="text-green-800 font-['PPMori'] font-medium text-sm flex items-center gap-2">
             <Check class="w-5 h-5 flex-shrink-0" />
-            Message envoyé ! Nous vous répondrons sous 24h.
+            {t('contact.form.success')}
           </p>
         </div>
         
@@ -49,7 +58,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
           class="space-y-5 sm:space-y-6" 
           id="contact-form"
           novalidate
-          aria-label="Formulaire de contact"
+          aria-label={locale === 'fr' ? 'Formulaire de contact' : 'Contact form'}
         >
           <!-- Champ Nom -->
           <div>
@@ -57,7 +66,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
               for="name" 
               class="block text-sm font-['PPMori'] font-medium text-gray-700 mb-2"
             >
-              Nom complet <span class="text-red-600" aria-label="requis">*</span>
+              {t('contact.form.name')} <span class="text-red-600" aria-label={locale === 'fr' ? 'requis' : 'required'}>*</span>
             </label>
             <input 
               type="text" 
@@ -76,7 +85,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
               class="hidden mt-2 text-sm text-red-600 font-['PPMori']"
               role="alert"
             >
-              Veuillez entrer votre nom complet
+              {locale === 'fr' ? 'Veuillez entrer votre nom complet' : 'Please enter your full name'}
             </p>
           </div>
 
@@ -86,7 +95,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
               for="email" 
               class="block text-sm font-['PPMori'] font-medium text-gray-700 mb-2"
             >
-              Email professionnel <span class="text-red-600" aria-label="requis">*</span>
+              {t('contact.form.email')} <span class="text-red-600" aria-label={locale === 'fr' ? 'requis' : 'required'}>*</span>
             </label>
             <input 
               type="email" 
@@ -105,7 +114,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
               class="hidden mt-2 text-sm text-red-600 font-['PPMori']"
               role="alert"
             >
-              Veuillez entrer une adresse email valide
+              {locale === 'fr' ? 'Veuillez entrer une adresse email valide' : 'Please enter a valid email address'}
             </p>
           </div>
 
@@ -115,7 +124,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
               for="pack" 
               class="block text-sm font-['PPMori'] font-medium text-gray-700 mb-2"
             >
-              Pack intéressé <span class="text-gray-500 text-xs">(optionnel)</span>
+              {t('contact.form.pack')} <span class="text-gray-500 text-xs">({locale === 'fr' ? 'optionnel' : 'optional'})</span>
             </label>
             <select 
               id="pack" 
@@ -123,7 +132,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
               aria-describedby="pack-hint"
               class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2d2d2d] focus:border-transparent transition-all outline-none font-['PPMori'] text-sm appearance-none cursor-pointer"
             >
-              <option value="">Je ne sais pas encore</option>
+              <option value="">{t('contact.form.pack.none')}</option>
               {pricingPlans.map((plan) => (
                 <option value={plan.name}>{plan.name} - {plan.price}€</option>
               ))}
@@ -132,7 +141,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
               id="pack-hint" 
               class="mt-2 text-xs text-gray-500 font-['PPMori']"
             >
-              Nous vous aiderons à choisir le pack adapté
+              {t('contact.form.pack.hint')}
             </p>
           </div>
 
@@ -142,7 +151,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
               for="message" 
               class="block text-sm font-['PPMori'] font-medium text-gray-700 mb-2"
             >
-              Parlez-nous de votre projet <span class="text-red-600" aria-label="requis">*</span>
+              {t('contact.form.message')} <span class="text-red-600" aria-label={locale === 'fr' ? 'requis' : 'required'}>*</span>
             </label>
             <textarea 
               id="message" 
@@ -153,20 +162,20 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
               aria-invalid="false"
               aria-describedby="message-error message-hint"
               class="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#2d2d2d] focus:border-transparent transition-all outline-none resize-none font-['PPMori'] text-sm"
-              placeholder="Je souhaite créer..."
+              placeholder={t('contact.form.message.placeholder')}
             ></textarea>
             <p 
               id="message-hint" 
               class="mt-2 text-xs text-gray-500 font-['PPMori']"
             >
-              Décrivez votre projet, vos objectifs et vos délais
+              {t('contact.form.message.hint')}
             </p>
             <p 
               id="message-error" 
               class="hidden mt-2 text-sm text-red-600 font-['PPMori']"
               role="alert"
             >
-              Veuillez décrire votre projet
+              {locale === 'fr' ? 'Veuillez décrire votre projet' : 'Please describe your project'}
             </p>
           </div>
 
@@ -174,41 +183,41 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
           <button 
             type="submit"
             class="cta-button group relative inline-flex items-center justify-center w-full px-8 py-3.5 text-base sm:text-lg font-['PPMori'] font-semibold text-white rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a1a1a] focus-visible:ring-offset-4 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-            aria-label="Envoyer le formulaire de contact"
+            aria-label={locale === 'fr' ? 'Envoyer le formulaire de contact' : 'Send contact form'}
           >
             <span class="relative z-10 flex items-center gap-2">
               <Send class="w-5 h-5" aria-hidden="true" />
-              <span>Envoyer ma demande</span>
+              <span>{t('contact.form.submit')}</span>
             </span>
           </button>
 
           <p class="text-sm text-gray-600 text-center font-['PPMori'] font-normal">
-            Réponse sous 24h maximum
+            {t('contact.form.response')}
           </p>
         </form>
       </div>
 
       <!-- Options de contact rapide -->
-      <aside class="space-y-6" aria-label="Méthodes de contact alternatives">
+      <aside class="space-y-6" aria-label={locale === 'fr' ? 'Méthodes de contact alternatives' : 'Alternative contact methods'}>
         
         <!-- Carte Calendly -->
         <article class="calendly-card bg-[#2d2d2d] rounded-2xl p-6 sm:p-8 text-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.12)] transition-all duration-300 relative overflow-hidden">
           <div class="flex flex-col items-start relative z-10">
             <h3 class="text-xl sm:text-2xl font-['PPMori'] font-semibold mb-3">
-              Réservez un call gratuit
+              {t('contact.calendly.title')}
             </h3>
             <p class="mb-6 text-gray-300 text-sm leading-relaxed font-['PPMori'] font-normal">
-              15 minutes pour discuter de votre projet sans engagement
+              {t('contact.calendly.description')}
             </p>
             <a 
               href={siteConfig.links.calendly}
               target="_blank"
               rel="noopener noreferrer"
               class="cta-button-light inline-flex items-center gap-2 px-6 py-3 bg-white text-[#2d2d2d] font-['PPMori'] font-medium text-sm rounded-full hover:bg-gray-100 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2d2d2d]"
-              aria-label="Ouvrir Calendly pour réserver un appel gratuit de 15 minutes"
+              aria-label={locale === 'fr' ? 'Ouvrir Calendly pour réserver un appel gratuit de 15 minutes' : 'Open Calendly to book a free 15-minute call'}
             >
               <Calendar class="w-4 h-4" aria-hidden="true" />
-              <span>Choisir un créneau</span>
+              <span>{t('contact.calendly.cta')}</span>
               <svg 
                 class="w-4 h-4" 
                 fill="none" 
@@ -240,12 +249,12 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
             </div>
             <div>
               <h3 class="text-lg sm:text-xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-2">
-                Ou écrivez-nous directement
+                {t('contact.email.title')}
               </h3>
               <a 
                 href={`mailto:${siteConfig.links.email}`}
                 class="text-[#2d2d2d] font-['PPMori'] font-medium text-sm sm:text-base hover:text-gray-700 transition-colors underline decoration-2 underline-offset-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded"
-                aria-label={`Envoyer un email à ${siteConfig.links.email}`}
+                aria-label={locale === 'fr' ? `Envoyer un email à ${siteConfig.links.email}` : `Send an email to ${siteConfig.links.email}`}
               >
                 {siteConfig.links.email}
               </a>
@@ -262,7 +271,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
             id="guarantees-heading"
             class="font-['PPMori'] font-semibold text-[#2d2d2d] mb-4"
           >
-            Nos engagements :
+            {t('contact.guarantees.title')}
           </h4>
           <ul 
             class="space-y-3 list-none"
@@ -277,7 +286,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
                 aria-hidden="true"
               />
               <span class="text-gray-700 text-sm font-['PPMori'] font-normal">
-                Réponse rapide (24h max)
+                {t('contact.guarantees.response')}
               </span>
             </li>
             <li 
@@ -289,7 +298,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
                 aria-hidden="true"
               />
               <span class="text-gray-700 text-sm font-['PPMori'] font-normal">
-                Devis détaillé et transparent
+                {t('contact.guarantees.quote')}
               </span>
             </li>
             <li 
@@ -301,7 +310,7 @@ import { Send, Mail, Calendar, Check } from 'lucide-astro';
                 aria-hidden="true"
               />
               <span class="text-gray-700 text-sm font-['PPMori'] font-normal">
-                Aucun engagement avant validation
+                {t('contact.guarantees.commitment')}
               </span>
             </li>
           </ul>

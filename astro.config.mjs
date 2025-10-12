@@ -39,6 +39,14 @@ export default defineConfig({
 
   integrations: [sitemap()],
 
+  i18n: {
+    defaultLocale: 'fr',
+    locales: ['fr', 'en'],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  },
+
   devToolbar: {
     enabled: false
   }

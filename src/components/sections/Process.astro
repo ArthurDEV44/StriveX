@@ -1,6 +1,14 @@
 ---
-import { processSteps } from '../../site.config';
+import { getProcessSteps, useTranslations } from '../../i18n';
 import { ArrowRight } from 'lucide-astro';
+
+interface Props {
+  locale: 'fr' | 'en';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const processSteps = getProcessSteps(locale);
 ---
 
 <!-- Section Process/Timeline avec sémantique appropriée -->
@@ -17,10 +25,10 @@ import { ArrowRight } from 'lucide-astro';
         id="process-heading"
         class="text-4xl md:text-5xl font-['PPMori'] font-bold text-gray-900 mb-4"
       >
-        Comment ça <span class="text-[#2d2d2d]">marche</span> ?
+        {t('process.heading')}
       </h2>
       <p class="text-xl text-gray-600 max-w-2xl mx-auto font-['PPMori'] font-normal">
-        Un processus simple et transparent pour concrétiser votre projet
+        {t('process.subheading')}
       </p>
     </header>
 
@@ -103,15 +111,15 @@ import { ArrowRight } from 'lucide-astro';
     <!-- Call-to-action en bas de section -->
     <footer class="mt-16 text-center">
       <p class="text-gray-600 mb-6 font-['PPMori'] font-normal">
-        Prêt à démarrer ? Réservez votre créneau dès maintenant
+        {t('process.cta.intro')}
       </p>
       <a 
         href="#contact"
         class="cta-button group relative inline-flex items-center px-8 py-3.5 text-lg font-['PPMori'] font-semibold text-white rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a1a1a] focus-visible:ring-offset-4"
-        aria-label="Commencer votre projet maintenant"
+        aria-label={locale === 'fr' ? 'Commencer votre projet maintenant' : 'Start your project now'}
       >
         <span class="relative z-10 flex items-center">
-          <span>Lancer mon projet</span>
+          <span>{t('process.cta')}</span>
           <ArrowRight 
             class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" 
             aria-hidden="true"

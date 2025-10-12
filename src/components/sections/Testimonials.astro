@@ -2,6 +2,14 @@
 import { testimonials } from '../../site.config';
 import { Star, Quote } from 'lucide-astro';
 import { siteConfig } from '../../site.config';
+import { useTranslations } from '../../i18n';
+
+interface Props {
+  locale: 'fr' | 'en';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
 
 // Calcul de la note moyenne
 const averageRating = testimonials.reduce((acc, t) => acc + t.rating, 0) / testimonials.length;
@@ -58,10 +66,10 @@ const reviewSchema = {
         id="testimonials-heading"
         class="text-4xl md:text-5xl font-['PPMori'] font-bold text-gray-900 mb-4"
       >
-        Ce que disent nos <span class="text-[#2d2d2d]">clients</span>
+        {t('testimonials.heading')}
       </h2>
       <p class="text-xl text-gray-600 max-w-2xl mx-auto font-['PPMori'] font-normal">
-        Des retours authentiques de startups qui ont fait confiance à StriveX
+        {t('testimonials.subheading')}
       </p>
     </header>
 

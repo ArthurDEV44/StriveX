@@ -1,14 +1,28 @@
 ---
 import { siteConfig } from '../site.config';
-import { ArrowUpRight, X, Menu } from 'lucide-astro';
+import { ArrowUpRight, X, Menu, Globe } from 'lucide-astro';
 import { Image } from 'astro:assets';
+import { useTranslations, languages } from '../i18n';
+
+interface Props {
+  locale: 'fr' | 'en';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
 
 // Navigation items configuration
 const navigationItems = [
-  { href: '#features', label: 'FONCTIONNALITÉS', ariaLabel: 'Aller à la section fonctionnalités' },
-  { href: '#pricing', label: 'OFFRES', ariaLabel: 'Aller à la section offres' },
-  { href: '#process', label: 'PROCESSUS', ariaLabel: 'Aller à la section processus' },
+  { href: '#features', label: t('nav.features'), ariaLabel: t('nav.aria.features') },
+  { href: '#pricing', label: t('nav.pricing'), ariaLabel: t('nav.aria.pricing') },
+  { href: '#process', label: t('nav.process'), ariaLabel: t('nav.aria.process') },
 ];
+
+// Language switcher
+const currentPath = Astro.url.pathname;
+const alternatePath = locale === 'fr' 
+  ? '/en' + currentPath 
+  : currentPath.replace('/en', '') || '/';
 ---
 
 <!-- Navigation principale -->
@@ -57,16 +71,28 @@ const navigationItems = [
         ))}
       </ul>
 
+      <!-- Language Switcher Desktop -->
+      <div class="hidden sm:flex flex-shrink-0">
+        <a 
+          href={alternatePath}
+          class="inline-flex items-center gap-2 px-3 py-2 text-sm font-['PPMori'] font-medium text-[#2d2d2d] hover:text-[#1a1a1a] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded-lg"
+          aria-label={locale === 'fr' ? 'Switch to English' : 'Passer en Français'}
+        >
+          <Globe class="w-4 h-4" aria-hidden="true" />
+          <span>{locale === 'fr' ? 'EN' : 'FR'}</span>
+        </a>
+      </div>
+
       <!-- CTA Button Desktop -->
       <div class="hidden sm:flex flex-shrink-0">
         <a 
           href="#contact"
           class="cta-button-light inline-flex items-center gap-2 px-4 lg:px-5 py-2.5 lg:py-3 bg-white border border-[#e5e5e5] rounded-full font-['PPMori'] font-medium text-sm text-[#2d2d2d] transition-all duration-300 shadow-[0_2px_8px_rgba(0,0,0,0.08)] relative overflow-hidden hover:shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:border-[#d1d1d1] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 group"
-          aria-label="Réserver un appel de consultation"
+          aria-label={t('nav.aria.cta')}
         >
           <span class="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-all duration-500 group-hover:left-full" aria-hidden="true"></span>
           <ArrowUpRight class="w-4 h-4 transition-transform duration-200 relative z-10 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
-          <span class="relative z-10">Réserver un appel</span>
+          <span class="relative z-10">{t('nav.cta')}</span>
         </a>
       </div>
 
@@ -135,15 +161,25 @@ const navigationItems = [
       </ul>
     </nav>
 
-    <!-- Mobile Menu CTA -->
-    <div class="p-4 sm:p-6 border-t border-gray-100">
+    <!-- Mobile Menu CTA & Language -->
+    <div class="p-4 sm:p-6 border-t border-gray-100 space-y-3">
       <a 
         href="#contact"
         class="cta-button-mobile flex items-center justify-center gap-2 w-full px-5 py-4 bg-[#2d2d2d] text-white rounded-xl font-['PPMori'] font-medium text-base transition-all duration-300 shadow-[0_2px_12px_rgba(0,0,0,0.15)] hover:bg-[#1a1a1a] hover:shadow-[0_4px_20px_rgba(0,0,0,0.25)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2"
-        aria-label="Réserver un appel de consultation"
+        aria-label={t('nav.aria.cta')}
       >
         <ArrowUpRight class="w-5 h-5 transition-transform duration-200" aria-hidden="true" />
-        <span>Réserver un appel</span>
+        <span>{t('nav.cta')}</span>
+      </a>
+      
+      <!-- Language Switcher Mobile -->
+      <a 
+        href={alternatePath}
+        class="flex items-center justify-center gap-2 w-full px-5 py-3 bg-white border border-gray-200 text-[#2d2d2d] rounded-xl font-['PPMori'] font-medium text-base transition-all duration-300 hover:bg-gray-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2"
+        aria-label={locale === 'fr' ? 'Switch to English' : 'Passer en Français'}
+      >
+        <Globe class="w-5 h-5" aria-hidden="true" />
+        <span>{locale === 'fr' ? 'English' : 'Français'}</span>
       </a>
     </div>
   </div>

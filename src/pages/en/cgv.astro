@@ -1,166 +1,165 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/sections/Footer.astro';
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/sections/Footer.astro';
 import { ArrowLeft } from 'lucide-astro';
-import { getLocaleFromUrl } from '../i18n';
+import { getLocaleFromUrl } from '../../i18n';
 
-// Métadonnées SEO améliorées
 export const prerender = true;
 
 const locale = getLocaleFromUrl(Astro.url);
 ---
 
 <Layout 
-  title="Conditions Générales de Vente (CGV) - StriveX | Développement Web"
-  description="Consultez les conditions générales de vente de StriveX : tarifs, délais de livraison, garantie satisfait ou remboursé, hébergement inclus et propriété intellectuelle."
+  title="Terms of Sale (CGV) - StriveX | Web Development"
+  description="View StriveX's general terms of sale: pricing, delivery times, money-back guarantee, included hosting and intellectual property."
 >
   <div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
     
-    <!-- En-tête de page avec breadcrumb -->
+    <!-- Page header with breadcrumb -->
     <header class="calendly-card bg-[#2d2d2d] text-white py-12 sm:py-16">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-['PPMori'] font-semibold mb-4 sm:mb-6">
-          Conditions Générales de Vente
+          Terms of Sale
         </h1>
-        <nav aria-label="Fil d'Ariane">
+        <nav aria-label="Breadcrumb">
           <a 
-            href="/" 
+            href="/en" 
             class="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors font-['PPMori'] text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2d2d2d] rounded px-2 py-1"
-            aria-label="Retourner à la page d'accueil"
+            aria-label="Return to home page"
           >
             <ArrowLeft class="w-4 h-4" aria-hidden="true" />
-            <span>Retour à l'accueil</span>
+            <span>Back to home</span>
           </a>
         </nav>
       </div>
     </header>
 
-    <!-- Contenu principal -->
+    <!-- Main content -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <article 
         class="bg-white rounded-2xl border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.08)] p-6 sm:p-8 md:p-10"
         aria-labelledby="cgv-title"
       >
-        <!-- Titre masqué pour les lecteurs d'écran (déjà en H1 dans header) -->
-        <h2 id="cgv-title" class="sr-only">Conditions Générales de Vente de StriveX</h2>
-        <!-- Section 1 : Objet -->
+        <h2 id="cgv-title" class="sr-only">StriveX Terms of Sale</h2>
+
+        <!-- Section 1: Purpose -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-1">
           <h3 id="section-1" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            1. Objet
+            1. Purpose
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            Les présentes conditions générales de vente régissent les relations contractuelles entre 
-            StriveX et ses clients dans le cadre de la vente de prestations de développement web.
+            These general terms of sale govern the contractual relationship between 
+            StriveX and its customers in the context of web development services.
           </p>
         </section>
 
-        <!-- Section 2 : Prestations -->
+        <!-- Section 2: Services -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-2">
           <h3 id="section-2" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            2. Prestations
+            2. Services
           </h3>
           <p class="text-gray-700 leading-relaxed mb-4 font-['PPMori'] text-sm sm:text-base">
-            StriveX propose trois packs de développement web :
+            StriveX offers three web development packages:
           </p>
           <ul class="list-disc pl-5 sm:pl-6 text-gray-700 space-y-2 font-['PPMori'] text-sm sm:text-base" role="list">
-            <li><strong class="font-semibold">Pack Launch</strong> : Landing page complète (1 800€ HT)</li>
-            <li><strong class="font-semibold">Pack Scale</strong> : Site complet 5-7 pages (2 800€ HT)</li>
-            <li><strong class="font-semibold">Pack MVP</strong> : Solution complète avec dashboard (4 500€ HT)</li>
+            <li><strong class="font-semibold">Launch Pack</strong>: Complete landing page (€1,800 excl. VAT)</li>
+            <li><strong class="font-semibold">Scale Pack</strong>: Complete 5-7 page website (€2,800 excl. VAT)</li>
+            <li><strong class="font-semibold">MVP Pack</strong>: Complete solution with dashboard (€4,500 excl. VAT)</li>
           </ul>
         </section>
 
-        <!-- Section 3 : Tarifs et paiement -->
+        <!-- Section 3: Pricing and Payment -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-3">
           <h3 id="section-3" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            3. Tarifs et paiement
+            3. Pricing and Payment
           </h3>
           <p class="text-gray-700 leading-relaxed mb-4 font-['PPMori'] text-sm sm:text-base">
-            Les tarifs sont indiqués en euros hors taxes. La TVA n'est pas applicable (franchise en base).
+            Prices are listed in euros excluding VAT. VAT does not apply (VAT exemption).
           </p>
           <p class="text-gray-700 leading-relaxed mb-4 font-['PPMori'] text-sm sm:text-base">
-            Le paiement s'effectue comme suit :
+            Payment is made as follows:
           </p>
           <ul class="list-disc pl-5 sm:pl-6 text-gray-700 space-y-2 font-['PPMori'] text-sm sm:text-base" role="list">
-            <li>50% d'acompte à la signature du devis</li>
-            <li>50% à la livraison du projet</li>
+            <li>50% deposit upon quote signature</li>
+            <li>50% upon project delivery</li>
           </ul>
         </section>
 
-        <!-- Section 4 : Délais de livraison -->
+        <!-- Section 4: Delivery Times -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-4">
           <h3 id="section-4" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            4. Délais de livraison
+            4. Delivery Times
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            Les délais annoncés (7, 14 ou 21 jours) commencent après validation des maquettes 
-            et réception de tous les contenus nécessaires. Ces délais sont indicatifs et peuvent 
-            être prolongés en cas de force majeure ou de retard dans la fourniture des contenus 
-            par le client.
+            The announced deadlines (7, 14 or 21 days) begin after validation of mockups 
+            and receipt of all necessary content. These deadlines are indicative and may 
+            be extended in case of force majeure or delay in content provision 
+            by the client.
           </p>
         </section>
 
-        <!-- Section 5 : Garantie satisfait ou remboursé -->
+        <!-- Section 5: Money-back Guarantee -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-5">
           <h3 id="section-5" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            5. Garantie satisfait ou remboursé
+            5. Money-back Guarantee
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            StriveX s'engage à itérer sur le projet jusqu'à satisfaction complète du client. 
-            En cas d'insatisfaction après la première version, le client dispose de 7 jours 
-            pour demander le remboursement intégral de l'acompte versé.
+            StriveX commits to iterating on the project until the client is fully satisfied. 
+            In case of dissatisfaction after the first version, the client has 7 days 
+            to request a full refund of the deposit paid.
           </p>
         </section>
 
-        <!-- Section 6 : Propriété intellectuelle -->
+        <!-- Section 6: Intellectual Property -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-6">
           <h3 id="section-6" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            6. Propriété intellectuelle
+            6. Intellectual Property
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            Le code source et les fichiers de design sont transférés au client après paiement 
-            intégral. Le client devient propriétaire de son site et peut le modifier librement.
+            The source code and design files are transferred to the client after full payment. 
+            The client becomes the owner of their site and can modify it freely.
           </p>
         </section>
 
-        <!-- Section 7 : Hébergement -->
+        <!-- Section 7: Hosting -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-7">
           <h3 id="section-7" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            7. Hébergement
+            7. Hosting
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            L'hébergement pour 1 an est inclus dans tous les packs (jusqu'à 100k visiteurs/mois). 
-            Au-delà de cette limite ou après la première année, des frais d'hébergement supplémentaires 
-            peuvent s'appliquer.
+            1-year hosting is included in all packages (up to 100k visitors/month). 
+            Beyond this limit or after the first year, additional hosting fees 
+            may apply.
           </p>
         </section>
 
-        <!-- Section 8 : Responsabilité -->
+        <!-- Section 8: Liability -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-8">
           <h3 id="section-8" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            8. Responsabilité
+            8. Liability
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            StriveX met tout en œuvre pour garantir le bon fonctionnement du site mais ne peut 
-            être tenu responsable des dommages indirects liés à l'utilisation du site.
+            StriveX makes every effort to ensure the proper functioning of the site but cannot 
+            be held responsible for indirect damages related to the use of the site.
           </p>
         </section>
 
-        <!-- Section 9 : Droit applicable -->
+        <!-- Section 9: Applicable Law -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-9">
           <h3 id="section-9" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            9. Droit applicable
+            9. Applicable Law
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            Les présentes CGV sont soumises au droit français. En cas de litige, les tribunaux 
-            français seront seuls compétents.
+            These Terms of Sale are subject to French law. In case of dispute, French courts 
+            shall have exclusive jurisdiction.
           </p>
         </section>
 
-        <!-- Pied de document -->
+        <!-- Document footer -->
         <footer class="border-t border-gray-200 pt-6 sm:pt-8 mt-8 sm:mt-12">
           <p class="text-gray-600 text-xs sm:text-sm font-['PPMori'] font-normal">
             <time datetime={new Date().toISOString()}>
-              Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { 
+              Last updated: {new Date().toLocaleDateString('en-US', { 
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 
@@ -174,5 +173,4 @@ const locale = getLocaleFromUrl(Astro.url);
     <Footer locale={locale} />
   </div>
 </Layout>
-
 

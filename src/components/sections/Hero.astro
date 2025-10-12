@@ -1,11 +1,19 @@
 ---
 import { ArrowUpRight, BadgeCheck } from 'lucide-astro';
+import { useTranslations } from '../../i18n';
+
+interface Props {
+  locale: 'fr' | 'en';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
 
 // Trust indicators configuration pour faciliter la maintenance
 const trustIndicators = [
-  { icon: BadgeCheck, text: 'Livraison rapide', ariaLabel: 'Délai de livraison garanti entre 14 et 30 jours peu varier selon la complexité du projet' },
-  { icon: BadgeCheck, text: '100% satisfait ou remboursé', ariaLabel: 'Garantie satisfait ou remboursé à 100%' },
-  { icon: BadgeCheck, text: 'Hébergement 1 an inclus', ariaLabel: 'Hébergement gratuit pendant un an' },
+  { icon: BadgeCheck, text: t('hero.trust.delivery'), ariaLabel: locale === 'fr' ? 'Délai de livraison garanti entre 14 et 30 jours peu varier selon la complexité du projet' : 'Guaranteed delivery time between 14 and 30 days may vary depending on project complexity' },
+  { icon: BadgeCheck, text: t('hero.trust.guarantee'), ariaLabel: locale === 'fr' ? 'Garantie satisfait ou remboursé à 100%' : '100% satisfied or refunded guarantee' },
+  { icon: BadgeCheck, text: t('hero.trust.hosting'), ariaLabel: locale === 'fr' ? 'Hébergement gratuit pendant un an' : 'Free hosting for one year' },
 ];
 ---
 
@@ -24,15 +32,14 @@ const trustIndicators = [
         id="hero-heading"
         class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-['PPMori'] font-semibold tracking-tight text-gray-900 mb-4 sm:mb-6 leading-[1.1] sm:leading-tight animate-fade-in-up animation-delay-200"
       >
-        Déployez votre site plus rapidement<br class="hidden sm:block" aria-hidden="true" />
-        <span class="block sm:inline"> avec notre Workflow</span>
+        {t('hero.title')}
       </h1>
 
       <!-- Sous-titre descriptif avec meilleur contraste -->
       <p 
         class="text-lg sm:text-xl md:text-2xl text-gray-700 mb-0 max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-['PPMori'] font-normal animate-fade-in-up animation-delay-400"
       >
-        Sites et MVPs sur-mesure pour startups ambitieuses. Design premium, livraison express.
+        {t('hero.subtitle')}
       </p>
     </header>
 
@@ -45,10 +52,10 @@ const trustIndicators = [
       <a 
         href="#contact" 
         class="cta-button group relative inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 text-base sm:text-lg font-['PPMori'] font-semibold text-white rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a1a1a] focus-visible:ring-offset-4"
-        aria-label="Réserver un appel de consultation avec notre équipe"
+        aria-label={locale === 'fr' ? 'Réserver un appel de consultation avec notre équipe' : 'Book a consultation call with our team'}
       >
         <span class="relative z-10 flex items-center gap-2">
-          <span>Réserver un appel gratuit (30 min)</span>
+          <span>{t('hero.cta.primary')}</span>
           <ArrowUpRight 
             class="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-45 transition-transform duration-300" 
             aria-hidden="true"
@@ -60,10 +67,10 @@ const trustIndicators = [
       <a 
         href="#pricing" 
         class="cta-button-light group relative inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 text-base sm:text-lg font-['PPMori'] font-semibold rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6] focus-visible:ring-offset-4"
-        aria-label="Consulter nos offres et tarifs"
+        aria-label={locale === 'fr' ? 'Consulter nos offres et tarifs' : 'View our packages and pricing'}
       >
         <span class="relative z-10 flex items-center gap-2">
-          <span>Voir nos offres</span>
+          <span>{t('hero.cta.secondary')}</span>
           <ArrowUpRight 
             class="w-4 h-4 sm:w-5 sm:h-5 group-hover:rotate-45 transition-transform duration-300" 
             aria-hidden="true"

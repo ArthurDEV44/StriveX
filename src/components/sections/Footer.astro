@@ -1,6 +1,14 @@
 ---
 import { siteConfig } from '../../site.config';
 import { Mail, Linkedin } from 'lucide-astro';
+import { useTranslations } from '../../i18n';
+
+interface Props {
+  locale: 'fr' | 'en';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
 ---
 
 <footer class="bg-[#2d2d2d] text-gray-300">
@@ -10,7 +18,7 @@ import { Mail, Linkedin } from 'lucide-astro';
       <div class="md:col-span-2">
         <h3 class="text-2xl font-['PPMori'] font-semibold text-white mb-4">StriveX</h3>
         <p class="text-gray-400 mb-6 max-w-md text-sm leading-relaxed">
-          Sites et MVPs sur-mesure pour startups ambitieuses. Lancez votre projet en 7 jours, pas 7 mois.
+          {t('footer.description')}
         </p>
         <div class="flex items-center space-x-4">
           <a 
@@ -34,38 +42,38 @@ import { Mail, Linkedin } from 'lucide-astro';
 
       <!-- Navigation -->
       <div>
-        <h4 class="text-white font-['PPMori'] font-semibold mb-4 text-sm tracking-wide">NAVIGATION</h4>
+        <h4 class="text-white font-['PPMori'] font-semibold mb-4 text-sm tracking-wide">{t('footer.nav.title')}</h4>
         <ul class="space-y-3">
           <li>
-            <a href="#features" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">Pourquoi StriveX</a>
+            <a href="#features" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">{t('footer.nav.features')}</a>
           </li>
           <li>
-            <a href="#pricing" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">Nos offres</a>
+            <a href="#pricing" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">{t('footer.nav.pricing')}</a>
           </li>
           <li>
-            <a href="#process" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">Notre processus</a>
+            <a href="#process" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">{t('footer.nav.process')}</a>
           </li>
           <li>
             <a href="#faq" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">FAQ</a>
           </li>
           <li>
-            <a href="#contact" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">Contact</a>
+            <a href="#contact" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">{t('footer.nav.contact')}</a>
           </li>
         </ul>
       </div>
 
       <!-- Legal -->
       <div>
-        <h4 class="text-white font-['PPMori'] font-semibold mb-4 text-sm tracking-wide">LÉGAL</h4>
+        <h4 class="text-white font-['PPMori'] font-semibold mb-4 text-sm tracking-wide">{t('footer.legal.title')}</h4>
         <ul class="space-y-3">
           <li>
-            <a href="/mentions-legales" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">Mentions légales</a>
+            <a href={locale === 'fr' ? '/mentions-legales' : '/en/mentions-legales'} class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">{t('footer.legal.mentions')}</a>
           </li>
           <li>
-            <a href="/cgv" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">CGV</a>
+            <a href={locale === 'fr' ? '/cgv' : '/en/cgv'} class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">{t('footer.legal.cgv')}</a>
           </li>
           <li>
-            <a href="/confidentialite" class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">Politique de confidentialité</a>
+            <a href={locale === 'fr' ? '/confidentialite' : '/en/confidentialite'} class="text-gray-400 hover:text-white transition-colors text-sm font-['PPMori']">{t('footer.legal.privacy')}</a>
           </li>
         </ul>
       </div>
@@ -75,10 +83,10 @@ import { Mail, Linkedin } from 'lucide-astro';
     <div class="pt-8 border-t border-gray-700">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <p class="text-gray-400 text-sm mb-4 md:mb-0 font-['PPMori']">
-          © {new Date().getFullYear()} StriveX. Tous droits réservés.
+          © {new Date().getFullYear()} StriveX. {t('footer.copyright')}
         </p>
         <p class="text-gray-400 text-sm font-['PPMori']">
-          Fait avec <span class="text-red-500">♥</span> pour les startups ambitieuses
+          {t('footer.tagline')}
         </p>
       </div>
     </div>

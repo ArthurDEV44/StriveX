@@ -1,135 +1,133 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/sections/Footer.astro';
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/sections/Footer.astro';
 import { ArrowLeft } from 'lucide-astro';
-import { getLocaleFromUrl } from '../i18n';
+import { getLocaleFromUrl } from '../../i18n';
 
-// Métadonnées SEO améliorées
 export const prerender = true;
 
 const locale = getLocaleFromUrl(Astro.url);
 ---
 
 <Layout 
-  title="Mentions Légales - StriveX | Informations Légales & SIRET"
-  description="Consultez les mentions légales de StriveX : éditeur, directeur de publication, hébergement Vercel, propriété intellectuelle et protection des données RGPD."
+  title="Legal Notice - StriveX | Legal Information & SIRET"
+  description="View the legal notice of StriveX: publisher, director of publication, Vercel hosting, intellectual property and GDPR data protection."
 >
   <div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
     
-    <!-- En-tête de page avec breadcrumb -->
+    <!-- Page header with breadcrumb -->
     <header class="calendly-card bg-[#2d2d2d] text-white py-12 sm:py-16">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-['PPMori'] font-semibold mb-4 sm:mb-6">
-          Mentions légales
+          Legal Notice
         </h1>
-        <nav aria-label="Fil d'Ariane">
+        <nav aria-label="Breadcrumb">
           <a 
-            href="/" 
+            href="/en" 
             class="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors font-['PPMori'] text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2d2d2d] rounded px-2 py-1"
-            aria-label="Retourner à la page d'accueil"
+            aria-label="Return to home page"
           >
             <ArrowLeft class="w-4 h-4" aria-hidden="true" />
-            <span>Retour à l'accueil</span>
+            <span>Back to home</span>
           </a>
         </nav>
       </div>
     </header>
 
-    <!-- Contenu principal -->
+    <!-- Main content -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <article 
         class="bg-white rounded-2xl border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.08)] p-6 sm:p-8 md:p-10"
         aria-labelledby="legal-title"
       >
-        <!-- Titre masqué pour les lecteurs d'écran -->
-        <h2 id="legal-title" class="sr-only">Mentions légales de StriveX</h2>
+        <h2 id="legal-title" class="sr-only">StriveX Legal Notice</h2>
 
-        <!-- Section Éditeur du site -->
+        <!-- Section: Website Publisher -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-editor">
           <h3 id="section-editor" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            Éditeur du site
+            Website Publisher
           </h3>
           <address class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base not-italic">
             <strong class="font-semibold">StriveX</strong><br />
-            Micro-entreprise<br />
-            <abbr title="Système d'Identification du Répertoire des Entreprises" class="no-underline">SIRET</abbr> : 88828980800014<br />
-            Adresse : 108 rue de la Gilarderie, 44200 Nantes<br />
-            Email : <a href="mailto:contact@strivex.fr" class="text-[#2d2d2d] underline decoration-2 underline-offset-4 hover:text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded">contact@strivex.fr</a><br />
-            Téléphone : 06 51 49 45 73
+            Sole proprietorship<br />
+            <abbr title="Business Identification System" class="no-underline">SIRET</abbr>: 88828980800014<br />
+            Address: 108 rue de la Gilarderie, 44200 Nantes, France<br />
+            Email: <a href="mailto:contact@strivex.fr" class="text-[#2d2d2d] underline decoration-2 underline-offset-4 hover:text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded">contact@strivex.fr</a><br />
+            Phone: +33 6 51 49 45 73
           </address>
         </section>
 
-        <!-- Section Directeur de publication -->
+        <!-- Section: Director of Publication -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-director">
           <h3 id="section-director" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            Directeur de publication
+            Director of Publication
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
             Arthur Jean
           </p>
         </section>
 
-        <!-- Section Hébergement -->
+        <!-- Section: Hosting -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-hosting">
           <h3 id="section-hosting" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            Hébergement
+            Hosting
           </h3>
           <p class="text-gray-700 leading-relaxed mb-2 font-['PPMori'] text-sm sm:text-base">
-            Ce site est hébergé par :
+            This site is hosted by:
           </p>
           <address class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base not-italic">
             <strong class="font-semibold">Vercel Inc.</strong><br />
             650 California St<br />
-            San Francisco, <abbr title="California" class="no-underline">CA</abbr> 94108<br />
-            États-Unis
+            San Francisco, CA 94108<br />
+            United States
           </address>
         </section>
 
-        <!-- Section Propriété intellectuelle -->
+        <!-- Section: Intellectual Property -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-ip">
           <h3 id="section-ip" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            Propriété intellectuelle
+            Intellectual Property
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            L'ensemble du contenu de ce site (textes, images, vidéos, etc.) est protégé par le droit d'auteur. 
-            Toute reproduction, distribution, modification, adaptation, retransmission ou publication de ces 
-            différents éléments est strictement interdite sans l'accord exprès par écrit de StriveX.
+            All content on this site (text, images, videos, etc.) is protected by copyright law. 
+            Any reproduction, distribution, modification, adaptation, retransmission or publication of these 
+            various elements is strictly prohibited without the express written consent of StriveX.
           </p>
         </section>
 
-        <!-- Section Protection des données personnelles -->
+        <!-- Section: Personal Data Protection -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-data-protection">
           <h3 id="section-data-protection" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            Protection des données personnelles
+            Personal Data Protection
           </h3>
           <p class="text-gray-700 leading-relaxed mb-4 font-['PPMori'] text-sm sm:text-base">
-            Conformément à la loi « Informatique et Libertés » du 6 janvier 1978 modifiée et au <abbr title="Règlement Général sur la Protection des Données" class="no-underline">RGPD</abbr>, 
-            vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant.
+            In accordance with the French Data Protection Act of January 6, 1978 as amended and the GDPR, 
+            you have the right to access, rectify and delete data concerning you.
           </p>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            Pour exercer ce droit, contactez-nous à : <a href="mailto:contact@strivex.fr" class="text-[#2d2d2d] underline decoration-2 underline-offset-4 hover:text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded">contact@strivex.fr</a>
+            To exercise this right, contact us at: <a href="mailto:contact@strivex.fr" class="text-[#2d2d2d] underline decoration-2 underline-offset-4 hover:text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded">contact@strivex.fr</a>
           </p>
           <p class="text-gray-700 leading-relaxed mt-4 font-['PPMori'] text-sm sm:text-base">
-            Pour plus d'informations, consultez notre <a href="/confidentialite" class="text-[#2d2d2d] underline decoration-2 underline-offset-4 hover:text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded">politique de confidentialité</a>.
+            For more information, see our <a href="/en/confidentialite" class="text-[#2d2d2d] underline decoration-2 underline-offset-4 hover:text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded">privacy policy</a>.
           </p>
         </section>
 
-        <!-- Section Cookies -->
+        <!-- Section: Cookies -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-cookies">
           <h3 id="section-cookies" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
             Cookies
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            Ce site n'utilise pas de cookies de tracking. Seuls des cookies techniques nécessaires 
-            au bon fonctionnement du site peuvent être utilisés.
+            This site does not use tracking cookies. Only technical cookies necessary 
+            for the proper functioning of the site may be used.
           </p>
         </section>
 
-        <!-- Pied de document -->
+        <!-- Document footer -->
         <footer class="border-t border-gray-200 pt-6 sm:pt-8 mt-8 sm:mt-12">
           <p class="text-gray-600 text-xs sm:text-sm font-['PPMori'] font-normal">
             <time datetime={new Date().toISOString()}>
-              Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { 
+              Last updated: {new Date().toLocaleDateString('en-US', { 
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 
@@ -143,5 +141,4 @@ const locale = getLocaleFromUrl(Astro.url);
     <Footer locale={locale} />
   </div>
 </Layout>
-
 

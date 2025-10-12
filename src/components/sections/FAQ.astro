@@ -1,6 +1,14 @@
 ---
-import { faqs } from '../../site.config';
+import { getFAQs, useTranslations } from '../../i18n';
 import { ChevronDown, ArrowRight } from 'lucide-astro';
+
+interface Props {
+  locale: 'fr' | 'en';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const faqs = getFAQs(locale);
 
 // Génération du Schema.org FAQPage
 const faqSchema = {
@@ -34,10 +42,10 @@ const faqSchema = {
         id="faq-heading"
         class="text-4xl md:text-5xl font-['PPMori'] font-bold text-gray-900 mb-4"
       >
-        Questions <span class="text-[#2d2d2d]">fréquentes</span>
+        {t('faq.heading')}
       </h2>
       <p class="text-xl text-gray-600 font-['PPMori'] font-normal">
-        Tout ce que vous devez savoir avant de vous lancer
+        {t('faq.subheading')}
       </p>
     </header>
 
@@ -78,15 +86,15 @@ const faqSchema = {
     <!-- Section d'aide supplémentaire -->
     <footer class="mt-12 text-center">
       <p class="text-gray-600 mb-6 font-['PPMori'] font-normal">
-        Vous avez d'autres questions ?
+        {t('faq.cta.intro')}
       </p>
       <a 
         href="#contact"
         class="cta-button-light group relative inline-flex items-center px-6 py-3 text-sm font-['PPMori'] font-medium rounded-full transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6] focus-visible:ring-offset-4"
-        aria-label="Contactez-nous directement pour plus d'informations"
+        aria-label={locale === 'fr' ? 'Contactez-nous directement pour plus d\'informations' : 'Contact us directly for more information'}
       >
         <span class="relative z-10 flex items-center gap-2">
-          <span>Contactez-nous directement</span>
+          <span>{t('faq.cta')}</span>
           <ArrowRight 
             class="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" 
             aria-hidden="true"

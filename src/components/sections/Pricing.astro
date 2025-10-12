@@ -1,14 +1,29 @@
 ---
-import { pricingPlans, addons } from '../../site.config';
+import { getPricingPlans, useTranslations } from '../../i18n';
 import { Check, BadgeCheck, ArrowRight } from 'lucide-astro';
 import { siteConfig } from '../../site.config';
+
+interface Props {
+  locale: 'fr' | 'en';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const pricingPlans = getPricingPlans(locale);
+
+const addons = [
+  {
+    name: t('pricing.addon.ai'),
+    price: t('pricing.addon.price')
+  }
+];
 
 // Génération du Schema.org Service/Offer pour chaque plan
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Tarifs StriveX - Sites et MVPs pour startups",
-  "description": "Offres de développement web pour startups : Launch (1 800€), Scale (2 800€), MVP (4 500€). Livraison rapide et support inclus.",
+  "name": locale === 'fr' ? "Tarifs StriveX - Sites et MVPs pour startups" : "StriveX Pricing - Websites and MVPs for startups",
+  "description": locale === 'fr' ? "Offres de développement web pour startups : Launch (1 800€), Scale (2 800€), MVP (4 500€). Livraison rapide et support inclus." : "Web development packages for startups: Launch (€1,800), Scale (€2,800), MVP (€4,500). Fast delivery and support included.",
   "offers": pricingPlans.map(plan => ({
     "@type": "Offer",
     "name": `Pack ${plan.name}`,
@@ -24,7 +39,7 @@ const serviceSchema = {
     "itemOffered": {
       "@type": "Service",
       "name": `Pack ${plan.name}`,
-      "description": `${plan.description}. Inclus : ${plan.features.join(', ')}`,
+      "description": `${plan.description}. ${locale === 'fr' ? 'Inclus' : 'Included'} : ${plan.features.join(', ')}`,
       "provider": {
         "@type": "Organization",
         "name": "StriveX"
@@ -51,10 +66,10 @@ const serviceSchema = {
         id="pricing-heading"
         class="text-3xl sm:text-4xl md:text-5xl font-['PPMori'] font-bold text-gray-900 mb-3 sm:mb-4 tracking-tight leading-tight"
       >
-        Des tarifs <span class="text-[#2d2d2d]">clairs et transparents</span>
+        {t('pricing.heading')}
       </h2>
       <p class="text-lg sm:text-xl md:text-2xl text-gray-700 max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-['PPMori'] font-normal">
-        Choisissez le pack adapté à votre stade de développement
+        {t('pricing.subheading')}
       </p>
     </header>
 
@@ -133,14 +148,14 @@ const serviceSchema = {
             </div>
           <div 
             class="mt-3 flex items-center text-sm sm:text-base"
-            aria-label={`Délai de livraison : ${plan.deliveryTime}`}
+            aria-label={locale === 'fr' ? `Délai de livraison : ${plan.deliveryTime}` : `Delivery time: ${plan.deliveryTime}`}
           >
             <span class="text-gray-700 font-['PPMori'] font-normal">
-              Livraison : <span class="font-semibold text-[#2d2d2d]">{plan.deliveryTime}</span>
+              {t('pricing.delivery')} <span class="font-semibold text-[#2d2d2d]">{plan.deliveryTime}</span>
             </span>
           </div>
           <p class="text-xs text-gray-600 mt-2 font-['PPMori'] font-normal">
-            * Peut varier selon le projet
+            {t('pricing.delivery.note')}
           </p>
         </div>
 
@@ -197,27 +212,27 @@ const serviceSchema = {
             id="addons-heading"
             class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] text-center tracking-tight"
           >
-            Options à la carte
+            {t('pricing.addons.title')}
           </h3>
         </header>
         
         <ul 
           class="w-full"
           role="list"
-          aria-label="Options supplémentaires disponibles"
+          aria-label={locale === 'fr' ? 'Options supplémentaires disponibles' : 'Additional options available'}
         >
           {addons.map((addon, addonIndex) => (
             <li 
               class="flex items-center justify-between p-4 bg-gradient-to-br from-blue-600/5 to-purple-600/5 border border-gray-200 rounded-xl"
               role="listitem"
-              aria-label={`${addon.name} au prix de ${addon.price}`}
+              aria-label={locale === 'fr' ? `${addon.name} au prix de ${addon.price}` : `${addon.name} priced at ${addon.price}`}
             >
               <span class="text-gray-700 font-['PPMori'] font-medium text-sm sm:text-base">
                 {addon.name}
               </span>
               <span 
                 class="text-[#2d2d2d] font-['PPMori'] font-semibold text-sm sm:text-base whitespace-nowrap ml-3"
-                aria-label={`Prix : ${addon.price}`}
+                aria-label={locale === 'fr' ? `Prix : ${addon.price}` : `Price: ${addon.price}`}
               >
                 {addon.price}
               </span>
@@ -226,7 +241,7 @@ const serviceSchema = {
         </ul>
         
         <p class="text-center text-gray-700 text-sm sm:text-base mt-6 font-['PPMori'] font-normal">
-          Combinez plusieurs options selon vos besoins
+          {t('pricing.addons.description')}
         </p>
       </div>
     </aside>

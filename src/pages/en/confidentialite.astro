@@ -1,178 +1,177 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Footer from '../components/sections/Footer.astro';
+import Layout from '../../layouts/Layout.astro';
+import Footer from '../../components/sections/Footer.astro';
 import { ArrowLeft } from 'lucide-astro';
-import { getLocaleFromUrl } from '../i18n';
+import { getLocaleFromUrl } from '../../i18n';
 
-// Métadonnées SEO améliorées
 export const prerender = true;
 
 const locale = getLocaleFromUrl(Astro.url);
 ---
 
 <Layout 
-  title="Politique de Confidentialité & RGPD - StriveX | Protection des Données"
-  description="Découvrez comment StriveX protège vos données personnelles : collecte, utilisation, conservation RGPD, cookies, vos droits et sécurité. Conformité totale au RGPD."
+  title="Privacy Policy & GDPR - StriveX | Data Protection"
+  description="Discover how StriveX protects your personal data: collection, use, GDPR retention, cookies, your rights and security. Full GDPR compliance."
 >
   <div class="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
     
-    <!-- En-tête de page avec breadcrumb -->
+    <!-- Page header with breadcrumb -->
     <header class="calendly-card bg-[#2d2d2d] text-white py-12 sm:py-16">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-['PPMori'] font-semibold mb-4 sm:mb-6">
-          Politique de confidentialité
+          Privacy Policy
         </h1>
-        <nav aria-label="Fil d'Ariane">
+        <nav aria-label="Breadcrumb">
           <a 
-            href="/" 
+            href="/en" 
             class="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors font-['PPMori'] text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#2d2d2d] rounded px-2 py-1"
-            aria-label="Retourner à la page d'accueil"
+            aria-label="Return to home page"
           >
             <ArrowLeft class="w-4 h-4" aria-hidden="true" />
-            <span>Retour à l'accueil</span>
+            <span>Back to home</span>
           </a>
         </nav>
       </div>
     </header>
 
-    <!-- Contenu principal -->
+    <!-- Main content -->
     <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
       <article 
         class="bg-white rounded-2xl border border-gray-200 shadow-[0_2px_8px_rgba(0,0,0,0.08)] p-6 sm:p-8 md:p-10"
         aria-labelledby="privacy-title"
       >
-        <!-- Titre masqué pour les lecteurs d'écran -->
-        <h2 id="privacy-title" class="sr-only">Politique de confidentialité de StriveX</h2>
-        <!-- Section Introduction -->
+        <h2 id="privacy-title" class="sr-only">StriveX Privacy Policy</h2>
+
+        <!-- Introduction Section -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-intro">
           <h3 id="section-intro" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
             Introduction
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            StriveX s'engage à protéger la vie privée de ses utilisateurs et à assurer la sécurité 
-            de leurs données personnelles. Cette politique explique comment nous collectons, utilisons 
-            et protégeons vos informations.
+            StriveX is committed to protecting the privacy of its users and ensuring the security 
+            of their personal data. This policy explains how we collect, use 
+            and protect your information.
           </p>
         </section>
 
-        <!-- Section Données collectées -->
+        <!-- Data Collected Section -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-data">
           <h3 id="section-data" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            Données collectées
+            Data Collected
           </h3>
           <p class="text-gray-700 leading-relaxed mb-4 font-['PPMori'] text-sm sm:text-base">
-            Nous collectons les données suivantes lorsque vous nous contactez :
+            We collect the following data when you contact us:
           </p>
           <ul class="list-disc pl-5 sm:pl-6 text-gray-700 space-y-2 font-['PPMori'] text-sm sm:text-base" role="list">
-            <li>Nom et prénom</li>
-            <li>Adresse email professionnelle</li>
-            <li>Message et description du projet</li>
-            <li>Pack sélectionné (optionnel)</li>
+            <li>First and last name</li>
+            <li>Professional email address</li>
+            <li>Message and project description</li>
+            <li>Selected package (optional)</li>
           </ul>
         </section>
 
-        <!-- Section Utilisation des données -->
+        <!-- Use of Data Section -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-usage">
           <h3 id="section-usage" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            Utilisation des données
+            Use of Data
           </h3>
           <p class="text-gray-700 leading-relaxed mb-4 font-['PPMori'] text-sm sm:text-base">
-            Vos données sont utilisées uniquement pour :
+            Your data is used only for:
           </p>
           <ul class="list-disc pl-5 sm:pl-6 text-gray-700 space-y-2 font-['PPMori'] text-sm sm:text-base" role="list">
-            <li>Répondre à vos demandes de contact</li>
-            <li>Établir des devis personnalisés</li>
-            <li>Communiquer sur l'avancement de votre projet</li>
-            <li>Améliorer nos services</li>
+            <li>Responding to your contact requests</li>
+            <li>Preparing personalized quotes</li>
+            <li>Communicating about your project progress</li>
+            <li>Improving our services</li>
           </ul>
           <p class="text-gray-700 leading-relaxed mt-4 font-['PPMori'] text-sm sm:text-base">
-            Nous ne vendons ni ne partageons vos données avec des tiers à des fins commerciales.
+            We do not sell or share your data with third parties for commercial purposes.
           </p>
         </section>
 
-        <!-- Section Cookies -->
+        <!-- Cookies Section -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-cookies">
           <h3 id="section-cookies" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
             Cookies
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            Ce site n'utilise pas de cookies de tracking ou de publicité. Seuls des cookies techniques 
-            strictement nécessaires au fonctionnement du site peuvent être utilisés (navigation, sécurité).
+            This site does not use tracking or advertising cookies. Only technical cookies 
+            strictly necessary for the functioning of the site may be used (navigation, security).
           </p>
         </section>
 
-        <!-- Section Conservation des données -->
+        <!-- Data Retention Section -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-retention">
           <h3 id="section-retention" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            Conservation des données
+            Data Retention
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            Vos données sont conservées pendant la durée nécessaire à la réalisation de votre projet, 
-            puis archivées conformément aux obligations légales (3 ans pour les devis, 10 ans pour 
-            les factures).
+            Your data is kept for the time necessary to complete your project, 
+            then archived in accordance with legal obligations (3 years for quotes, 10 years for 
+            invoices).
           </p>
         </section>
 
-        <!-- Section Vos droits RGPD -->
+        <!-- Your GDPR Rights Section -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-rights">
           <h3 id="section-rights" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            Vos droits
+            Your Rights
           </h3>
           <p class="text-gray-700 leading-relaxed mb-4 font-['PPMori'] text-sm sm:text-base">
-            Conformément au <abbr title="Règlement Général sur la Protection des Données" class="no-underline">RGPD</abbr>, vous disposez des droits suivants :
+            In accordance with the <abbr title="General Data Protection Regulation" class="no-underline">GDPR</abbr>, you have the following rights:
           </p>
           <ul class="list-disc pl-5 sm:pl-6 text-gray-700 space-y-2 font-['PPMori'] text-sm sm:text-base" role="list">
-            <li><strong class="font-semibold">Droit d'accès</strong> : consulter vos données personnelles</li>
-            <li><strong class="font-semibold">Droit de rectification</strong> : corriger vos données</li>
-            <li><strong class="font-semibold">Droit à l'effacement</strong> : supprimer vos données</li>
-            <li><strong class="font-semibold">Droit d'opposition</strong> : s'opposer au traitement de vos données</li>
-            <li><strong class="font-semibold">Droit à la portabilité</strong> : récupérer vos données</li>
+            <li><strong class="font-semibold">Right of access</strong>: consult your personal data</li>
+            <li><strong class="font-semibold">Right of rectification</strong>: correct your data</li>
+            <li><strong class="font-semibold">Right to erasure</strong>: delete your data</li>
+            <li><strong class="font-semibold">Right to object</strong>: oppose the processing of your data</li>
+            <li><strong class="font-semibold">Right to portability</strong>: retrieve your data</li>
           </ul>
           <p class="text-gray-700 leading-relaxed mt-4 font-['PPMori'] text-sm sm:text-base">
-            Pour exercer ces droits, contactez-nous à : <a href="mailto:contact@strivex.fr" class="text-[#2d2d2d] underline decoration-2 underline-offset-4 hover:text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded">contact@strivex.fr</a>
+            To exercise these rights, contact us at: <a href="mailto:contact@strivex.fr" class="text-[#2d2d2d] underline decoration-2 underline-offset-4 hover:text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded">contact@strivex.fr</a>
           </p>
         </section>
 
-        <!-- Section Sécurité -->
+        <!-- Security Section -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-security">
           <h3 id="section-security" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
-            Sécurité
+            Security
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            Nous mettons en œuvre toutes les mesures techniques et organisationnelles appropriées 
-            pour protéger vos données contre tout accès non autorisé, perte ou divulgation.
+            We implement all appropriate technical and organizational measures 
+            to protect your data against unauthorized access, loss or disclosure.
           </p>
         </section>
 
-        <!-- Section Modifications -->
+        <!-- Modifications Section -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-modifications">
           <h3 id="section-modifications" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
             Modifications
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            Cette politique peut être mise à jour. Les modifications seront publiées sur cette page 
-            avec une nouvelle date de mise à jour.
+            This policy may be updated. Changes will be published on this page 
+            with a new update date.
           </p>
         </section>
 
-        <!-- Section Contact -->
+        <!-- Contact Section -->
         <section class="mb-8 sm:mb-10 md:mb-12" aria-labelledby="section-contact">
           <h3 id="section-contact" class="text-xl sm:text-2xl font-['PPMori'] font-semibold text-[#2d2d2d] mb-3 sm:mb-4">
             Contact
           </h3>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base">
-            Pour toute question concernant cette politique de confidentialité :
+            For any questions regarding this privacy policy:
           </p>
           <p class="text-gray-700 leading-relaxed font-['PPMori'] text-sm sm:text-base mt-2">
-            Email : <a href="mailto:contact@strivex.fr" class="text-[#2d2d2d] underline decoration-2 underline-offset-4 hover:text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded">contact@strivex.fr</a>
+            Email: <a href="mailto:contact@strivex.fr" class="text-[#2d2d2d] underline decoration-2 underline-offset-4 hover:text-gray-700 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d2d2d] focus-visible:ring-offset-2 rounded">contact@strivex.fr</a>
           </p>
         </section>
 
-        <!-- Pied de document -->
+        <!-- Document footer -->
         <footer class="border-t border-gray-200 pt-6 sm:pt-8 mt-8 sm:mt-12">
           <p class="text-gray-600 text-xs sm:text-sm font-['PPMori'] font-normal">
             <time datetime={new Date().toISOString()}>
-              Dernière mise à jour : {new Date().toLocaleDateString('fr-FR', { 
+              Last updated: {new Date().toLocaleDateString('en-US', { 
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 
@@ -186,5 +185,4 @@ const locale = getLocaleFromUrl(Astro.url);
     <Footer locale={locale} />
   </div>
 </Layout>
-
 

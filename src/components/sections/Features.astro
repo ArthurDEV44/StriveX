@@ -1,6 +1,14 @@
 ---
-import { features } from '../../site.config';
+import { getFeatures, useTranslations } from '../../i18n';
 import { Zap, Gem, Target, Users, ArrowRight } from 'lucide-astro';
+
+interface Props {
+  locale: 'fr' | 'en';
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const features = getFeatures(locale);
 
 // Mapping des icônes avec leurs composants Lucide
 const iconMap = {
@@ -12,10 +20,10 @@ const iconMap = {
 
 // Labels ARIA pour les icônes (contexte sémantique)
 const iconAriaLabels: Record<string, string> = {
-  Zap: 'Icône de rapidité',
-  Gem: 'Icône de qualité premium',
-  Target: 'Icône de ciblage et spécialisation',
-  Users: 'Icône d\'accompagnement personnalisé'
+  Zap: locale === 'fr' ? 'Icône de rapidité' : 'Speed icon',
+  Gem: locale === 'fr' ? 'Icône de qualité premium' : 'Premium quality icon',
+  Target: locale === 'fr' ? 'Icône de ciblage et spécialisation' : 'Targeting and specialization icon',
+  Users: locale === 'fr' ? 'Icône d\'accompagnement personnalisé' : 'Personalized support icon'
 };
 ---
 
@@ -33,10 +41,10 @@ const iconAriaLabels: Record<string, string> = {
         id="features-heading"
         class="text-3xl sm:text-4xl md:text-5xl font-['PPMori'] font-bold text-gray-900 mb-3 sm:mb-4 tracking-tight leading-tight"
       >
-        Pourquoi choisir StriveX ?
+        {t('features.heading')}
       </h2>
       <p class="text-lg sm:text-xl md:text-2xl text-gray-700 max-w-2xl lg:max-w-3xl mx-auto leading-relaxed font-['PPMori'] font-normal">
-        On combine rapidité, qualité et expertise pour transformer votre vision en produit
+        {t('features.subheading')}
       </p>
     </header>
 
@@ -73,14 +81,14 @@ const iconAriaLabels: Record<string, string> = {
     <!-- Ajout optionnel : call-to-action après les features -->
     <div class="mt-12 sm:mt-14 md:mt-16 text-center">
       <p class="text-base sm:text-lg text-gray-600 mb-6 font-['PPMori'] font-normal">
-        Prêt à lancer votre projet ?
+        {t('features.cta.intro')}
       </p>
       <a 
         href="#contact"
         class="cta-button group relative inline-flex items-center px-6 py-3 text-sm font-['PPMori'] font-medium rounded-full transition-all duration-300 cursor-pointer text-white"
-        aria-label="Commencer votre projet maintenant"
+        aria-label={locale === 'fr' ? 'Commencer votre projet maintenant' : 'Start your project now'}
       >
-        <span>Commencer maintenant</span>
+        <span>{t('features.cta')}</span>
         <ArrowRight class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" aria-hidden="true" />
       </a>
     </div>

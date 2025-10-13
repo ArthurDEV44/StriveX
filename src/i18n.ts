@@ -45,6 +45,8 @@ export const translations = {
     // Pricing
     'pricing.heading': 'Des tarifs clairs et transparents',
     'pricing.subheading': 'Choisissez le pack adapté à votre stade de développement',
+    'pricing.refresh.badge': 'Redonnez vie à votre site',
+    'pricing.refresh.description': 'Pour sites existants nécessitant une modernisation',
     'pricing.launch.badge': 'Parfait pour valider votre idée',
     'pricing.launch.description': 'Pour pre-seed, solo founders, side projects',
     'pricing.scale.badge': 'Recommandé',
@@ -126,6 +128,12 @@ export const translations = {
     'footer.tagline': 'Fait avec ♥ pour les startups ambitieuses',
     
     // Pricing Features
+    'feature.audit': 'Audit de votre site actuel',
+    'feature.refonte': 'Refonte design moderne et responsive',
+    'feature.migration': 'Migration contenu incluse (max 5 pages)',
+    'feature.seo.optimization': 'Optimisation SEO existant',
+    'feature.bugs': 'Correction bugs et performances',
+    'feature.training': 'Formation 1h à la remise',
     'feature.landing': 'Landing page 1 page complète',
     'feature.design': 'Design moderne et responsive',
     'feature.seo.basic': 'SEO de base',
@@ -149,11 +157,11 @@ export const translations = {
     
     // Meta
     'meta.home.title': 'StriveX - Sites & MVPs sur-mesure pour startups',
-    'meta.home.description': 'StriveX : landing pages, sites vitrine et MVPs SaaS. Design premium, livraison rapide, tarifs transparents. Pas d\'agence, du sur-mesure. Dès 1 800€.',
+    'meta.home.description': 'StriveX : landing pages, sites vitrine et MVPs SaaS. Design premium, livraison rapide, tarifs transparents. Pas d\'agence, du sur-mesure. Dès 990€.',
     
     // FAQs
     'faq.1.question': 'Quels sont les délais de livraison ?',
-    'faq.1.answer': 'Selon le pack choisi : 14 jours pour Launch, 30 jours pour Scale et 45 jours pour MVP. Ces délais commencent après validation des maquettes et réception de tous les contenus. Les délais peuvent varier selon la complexité du projet.',
+    'faq.1.answer': 'Selon le pack choisi : 10 jours pour Refresh, 14 jours pour Launch, 30 jours pour Scale et 45 jours pour MVP. Ces délais commencent après validation des maquettes et réception de tous les contenus. Les délais peuvent varier selon la complexité du projet.',
     'faq.2.question': 'Puis-je modifier mon site après livraison ?',
     'faq.2.answer': 'Absolument ! Vous pouvez profiter de notre forfait maintenance pour modifier votre site. Certaines modifications peuvent susciter des frais supplémentaires.',
     'faq.3.question': 'Quelles technologies utilisez-vous ?',
@@ -202,6 +210,8 @@ export const translations = {
     // Pricing
     'pricing.heading': 'Clear and transparent pricing',
     'pricing.subheading': 'Choose the package that fits your stage of development',
+    'pricing.refresh.badge': 'Breathe new life into your site',
+    'pricing.refresh.description': 'For existing sites requiring modernization',
     'pricing.launch.badge': 'Perfect to validate your idea',
     'pricing.launch.description': 'For pre-seed, solo founders, side projects',
     'pricing.scale.badge': 'Recommended',
@@ -283,6 +293,12 @@ export const translations = {
     'footer.tagline': 'Made with ♥ for ambitious startups',
     
     // Pricing Features
+    'feature.audit': 'Audit of your current site',
+    'feature.refonte': 'Modern and responsive design overhaul',
+    'feature.migration': 'Content migration included (max 5 pages)',
+    'feature.seo.optimization': 'Existing SEO optimization',
+    'feature.bugs': 'Bug fixes and performance',
+    'feature.training': '1h training session on delivery',
     'feature.landing': 'Complete 1-page landing page',
     'feature.design': 'Modern and responsive design',
     'feature.seo.basic': 'Basic SEO',
@@ -306,11 +322,11 @@ export const translations = {
     
     // Meta
     'meta.home.title': 'StriveX - Custom Websites & MVPs for Startups',
-    'meta.home.description': 'StriveX: landing pages, showcase websites and SaaS MVPs. Premium design, fast delivery, transparent pricing. No agency, custom work. Starting at €1,800.',
+    'meta.home.description': 'StriveX: landing pages, showcase websites and SaaS MVPs. Premium design, fast delivery, transparent pricing. No agency, custom work. Starting at €990.',
     
     // FAQs
     'faq.1.question': 'What are the delivery times?',
-    'faq.1.answer': 'Depending on the chosen package: 14 days for Launch, 30 days for Scale, and 45 days for MVP. These deadlines start after mockup validation and receipt of all content. Deadlines may vary depending on project complexity.',
+    'faq.1.answer': 'Depending on the chosen package: 10 days for Refresh, 14 days for Launch, 30 days for Scale, and 45 days for MVP. These deadlines start after mockup validation and receipt of all content. Deadlines may vary depending on project complexity.',
     'faq.2.question': 'Can I modify my site after delivery?',
     'faq.2.answer': 'Absolutely! You can take advantage of our maintenance package to modify your site. Some modifications may incur additional fees.',
     'faq.3.question': 'What technologies do you use?',
@@ -360,6 +376,26 @@ export function getFAQs(lang: keyof typeof translations) {
 export function getPricingPlans(lang: keyof typeof translations) {
   const t = useTranslations(lang);
   return [
+    {
+      name: 'Refresh',
+      price: '990',
+      currency: '€',
+      period: lang === 'fr' ? 'HT' : 'Excl. VAT',
+      badge: t('pricing.refresh.badge'),
+      description: t('pricing.refresh.description'),
+      deliveryTime: lang === 'fr' ? '10 jours' : '10 days',
+      features: [
+        t('feature.audit'),
+        t('feature.refonte'),
+        t('feature.migration'),
+        t('feature.seo.optimization'),
+        t('feature.bugs'),
+        t('feature.training'),
+        t('feature.support.30')
+      ],
+      cta: lang === 'fr' ? 'Choisir Refresh' : 'Choose Refresh',
+      popular: false
+    },
     {
       name: 'Launch',
       price: '1 800',

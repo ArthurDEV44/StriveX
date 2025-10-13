@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "StriveX",
   title: "StriveX - Sites & MVPs sur-mesure pour startups",
-  description: "StriveX : landing pages, sites vitrine et MVPs SaaS. Design premium, livraison rapide, tarifs transparents. Pas d'agence, du sur-mesure. Dès 1 800€.",
+  description: "StriveX : landing pages, sites vitrine et MVPs SaaS. Design premium, livraison rapide, tarifs transparents. Pas d'agence, du sur-mesure. Dès 990€.",
   url: "https://strivex.fr",
   ogImage: "/og-image.jpg",
   keywords: [
@@ -55,6 +55,27 @@ export const features = [
 ]
 
 export const pricingPlans = [
+  {
+    name: "Refresh",
+    price: "990",
+    currency: "€",
+    period: "HT",
+    badge: "Redonnez vie à votre site",
+    description: "Pour sites existants nécessitant une modernisation",
+    deliveryTime: "10 jours",
+    features: [
+      "Audit de votre site actuel",
+      "Refonte design moderne et responsive",
+      "Migration contenu incluse (max 5 pages)",
+      "Optimisation SEO existant",
+      "Correction bugs et performances",
+      "Formation 1h à la remise",
+      "Support 30 jours"
+    ],
+    cta: "Choisir Refresh",
+    popular: false,
+    conditions: "Site existant de max 5 pages, contenu fourni, 2 A/R max"
+  },
   {
     name: "Launch",
     price: "1 800",

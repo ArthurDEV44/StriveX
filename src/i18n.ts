@@ -45,11 +45,12 @@ export const translations = {
     // Pricing
     'pricing.heading': 'Des tarifs clairs et transparents',
     'pricing.subheading': 'Choisissez le pack adapté à votre stade de développement',
+    'pricing.from': 'à partir de',
     'pricing.refresh.badge': 'Redonnez vie à votre site',
     'pricing.refresh.description': 'Pour sites existants nécessitant une modernisation',
     'pricing.launch.badge': 'Parfait pour valider votre idée',
     'pricing.launch.description': 'Pour pre-seed, solo founders, side projects',
-    'pricing.scale.badge': 'Recommandé',
+    'pricing.scale.badge': 'Parfait pour faire grandir votre business',
     'pricing.scale.description': 'Pour startups seed, SaaS en lancement',
     'pricing.mvp.badge': 'Solution complète',
     'pricing.mvp.description': 'Pour SaaS en growth, Series A, produits complexes',
@@ -210,11 +211,12 @@ export const translations = {
     // Pricing
     'pricing.heading': 'Clear and transparent pricing',
     'pricing.subheading': 'Choose the package that fits your stage of development',
+    'pricing.from': 'from',
     'pricing.refresh.badge': 'Breathe new life into your site',
     'pricing.refresh.description': 'For existing sites requiring modernization',
     'pricing.launch.badge': 'Perfect to validate your idea',
     'pricing.launch.description': 'For pre-seed, solo founders, side projects',
-    'pricing.scale.badge': 'Recommended',
+    'pricing.scale.badge': 'Perfect to grow your business',
     'pricing.scale.description': 'For seed startups, launching SaaS',
     'pricing.mvp.badge': 'Complete solution',
     'pricing.mvp.description': 'For growth SaaS, Series A, complex products',
@@ -378,7 +380,7 @@ export function getPricingPlans(lang: keyof typeof translations) {
   return [
     {
       name: 'Refresh',
-      price: '990',
+      price: ' 990',
       currency: '€',
       period: lang === 'fr' ? 'HT' : 'Excl. VAT',
       badge: t('pricing.refresh.badge'),
@@ -434,7 +436,7 @@ export function getPricingPlans(lang: keyof typeof translations) {
         t('feature.support.60')
       ],
       cta: lang === 'fr' ? 'Choisir Scale' : 'Choose Scale',
-      popular: true
+      popular: false
     },
     {
       name: 'MVP',

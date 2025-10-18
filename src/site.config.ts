@@ -4,7 +4,7 @@ export const siteConfig = {
   title: "StriveX - Sites & MVPs sur-mesure pour startups",
   description: "StriveX : landing pages, sites vitrine et MVPs SaaS. Design premium, livraison rapide, tarifs transparents. Pas d'agence, du sur-mesure. Dès 990€.",
   url: "https://strivex.fr",
-  ogImage: "/og-image.jpg",
+  ogImage: "/images/strivex-social.png",
   keywords: [
     // Positionnement Core (QUI) - Sans "startup"
     "développeur freelance",

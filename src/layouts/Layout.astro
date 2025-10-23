@@ -1,6 +1,6 @@
 ---
 import { siteConfig } from '../site.config';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { Navbar } from '../components';
 import { getLocaleFromUrl, useTranslations } from '../i18n';
@@ -71,7 +71,7 @@ const alternateURL = new URL(locale === 'fr' ? '/en' + Astro.url.pathname : Astr
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
 		<!-- View Transitions -->
-		<ViewTransitions />
+		<ClientRouter />
 
 		<!-- Schema.org markup - Professional Service / Freelancer -->
 		<script type="application/ld+json">
